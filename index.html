@@ -8,7 +8,8 @@
     <link rel="icon" type="image/png" href="image/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Orbitron:wght@700;800;900&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Orbitron:wght@600;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@700;800;900&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css?v=9">
 </head>
@@ -21,7 +22,7 @@
         .navbar { background: rgba(8,8,20,0.92) !important; backdrop-filter: blur(20px) !important; border-bottom: 1px solid rgba(0,240,255,0.15) !important; }
         .brand-line1 { font-family: 'Orbitron', sans-serif !important; font-size: 0.65rem !important; font-weight: 800 !important; letter-spacing: 2px !important; color: #fff !important; }
         .brand-line2 { font-family: 'Orbitron', sans-serif !important; font-size: 0.62rem !important; font-weight: 700 !important; letter-spacing: 2px !important; color: var(--cyan-glow) !important; }
-        .nav-link { font-family: 'Plus Jakarta Sans', sans-serif !important; font-size: 0.9rem !important; font-weight: 600 !important; letter-spacing: 0.5px !important; }
+        
         .nav-link.active { color: var(--cyan-glow) !important; }
         /* Fix btn-outline */
         .btn-outline { display:inline-flex !important; align-items:center !important; gap:8px !important; padding:12px 28px !important; border:2px solid rgba(255,255,255,0.4) !important; border-radius:50px !important; color:#fff !important; font-family:'Plus Jakarta Sans',sans-serif !important; font-weight:700 !important; font-size:1rem !important; text-decoration:none !important; transition:all 0.3s !important; background:rgba(255,255,255,0.05) !important; cursor:pointer !important; }
@@ -51,19 +52,20 @@
                     <span class="brand-line1">DHAKA COLLEGE</span>
                     <span class="brand-line2">SCIENCE CLUB</span>
                 </div>
+                <span class="brand-mobile">DCSC</span>
             </a>
             <nav class="nav-menu" id="nav-menu">
                 <a href="index.html" class="nav-link active">Home</a>
                 <a href="events.html" class="nav-link">Events</a>
                 <a href="achievements.html" class="nav-link">Achievements</a>
                 <a href="committee.html" class="nav-link">Committee</a>
-                <a href="scilab.html" class="nav-link">Sci-Lab</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
                 <div class="nav-dropdown">
                     <a href="#" class="nav-link dropdown-toggle">More <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i></a>
                     <div class="dropdown-menu">
+                        <a href="scilab.html" class="dropdown-item"><i class="fa-solid fa-flask"></i> Sci-Lab</a>
                         <a href="wall-magazine.html" class="dropdown-item"><i class="fa-solid fa-newspaper"></i> Wall Magazine</a>
                         <a href="posts.html" class="dropdown-item"><i class="fa-solid fa-bullhorn"></i> Posts &amp; News</a>
-                        <a href="gallery.html" class="dropdown-item"><i class="fa-solid fa-images"></i> Photo Gallery</a>
                         <a href="about.html" class="dropdown-item"><i class="fa-solid fa-circle-info"></i> Info &amp; Contact</a>
                     </div>
                 </div>
@@ -120,7 +122,8 @@
                 </div>
 
                 <!-- RIGHT: Glowing Shield Visual -->
-                <div class="animate-on-scroll" style="flex:0 0 auto; display:flex; align-items:center; justify-content:center;">
+                <div id="hero-logo-visual" class="animate-on-scroll" style="flex:0 0 auto; display:flex; align-items:center; justify-content:center;">
+
                     <div style="position:relative; width:280px; height:280px;">
                         <!-- Outer rotating ring -->
                         <div style="position:absolute; inset:-30px; border-radius:50%; border:2px solid transparent; border-top-color:var(--cyan-glow); border-right-color:rgba(0,240,255,0.3); animation:spin 6s linear infinite;"></div>
@@ -337,6 +340,63 @@
             </div>
         </section>
 
+        <!-- POSTS & NEWS PREVIEW -->
+        <section class="section-padding" style="background:linear-gradient(180deg,rgba(255,215,0,0.03) 0%,var(--bg-main) 100%);">
+            <div class="section-container">
+                <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:40px;">
+                    <div>
+                        <span style="font-family:'Space Grotesk',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:3px;color:var(--gold-accent);text-transform:uppercase;display:block;margin-bottom:8px;">HALL OF FAME</span>
+                        <h2 style="font-family:'Orbitron',sans-serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;color:#fff;margin:0;">Posts &amp; News Feed</h2>
+                    </div>
+                    <a href="posts.html" style="display:inline-flex;align-items:center;gap:9px;padding:11px 22px;background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.3);border-radius:50px;color:var(--gold-accent);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:0.88rem;text-decoration:none;transition:all 0.3s;white-space:nowrap;" onmouseover="this.style.background='rgba(255,215,0,0.18)'" onmouseout="this.style.background='rgba(255,215,0,0.08)'"><i class="fa-solid fa-newspaper"></i> View All Posts</a>
+                </div>
+
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
+                    <!-- Post 1 — July Mass Uprising Memorial -->
+                    <a href="posts.html" style="text-decoration:none;display:block;background:var(--card-bg);border:1px solid var(--border-color);border-radius:20px;overflow:hidden;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--cyan-glow)';this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform='translateY(0)'">
+                        <div style="height:200px;overflow:hidden;position:relative;">
+                            <img src="image/p1.jpg" alt="July Mass Uprising Memorial" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='rgba(0,240,255,0.08)'">
+                            <div style="position:absolute;top:12px;left:12px;background:rgba(0,240,255,0.15);border:1px solid rgba(0,240,255,0.3);border-radius:20px;padding:4px 12px;font-family:'Orbitron',sans-serif;font-size:0.6rem;font-weight:700;color:var(--cyan-glow);letter-spacing:1px;text-transform:uppercase;">Memorial</div>
+                        </div>
+                        <div style="padding:20px;">
+                            <p style="font-family:'Orbitron',sans-serif;font-size:0.6rem;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin:0 0 8px;">August 2025</p>
+                            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:800;color:#fff;margin:0 0 8px;line-height:1.4;">July Mass Uprising Memorial</h3>
+                            <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.85rem;color:var(--text-secondary);margin:0;line-height:1.6;">July is not just a month — it is a symbol of courage, sacrifice, and change.</p>
+                            <div style="margin-top:14px;display:flex;align-items:center;gap:6px;color:var(--cyan-glow);font-family:'Orbitron',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:1px;">READ MORE <i class="fa-solid fa-arrow-right" style="font-size:0.7rem;"></i></div>
+                        </div>
+                    </a>
+
+                    <!-- Post 2 — Olympiad Hunt 4.0 Prize Giving -->
+                    <a href="posts.html" style="text-decoration:none;display:block;background:var(--card-bg);border:1px solid var(--border-color);border-radius:20px;overflow:hidden;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--gold-accent)';this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform='translateY(0)'">
+                        <div style="height:200px;overflow:hidden;position:relative;">
+                            <img src="image/p2.1.jpg" alt="Olympiad Hunt 4.0 Prize Giving" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='rgba(255,215,0,0.06)'">
+                            <div style="position:absolute;top:12px;left:12px;background:rgba(255,215,0,0.15);border:1px solid rgba(255,215,0,0.3);border-radius:20px;padding:4px 12px;font-family:'Orbitron',sans-serif;font-size:0.6rem;font-weight:700;color:var(--gold-accent);letter-spacing:1px;text-transform:uppercase;">Prize Giving</div>
+                        </div>
+                        <div style="padding:20px;">
+                            <p style="font-family:'Orbitron',sans-serif;font-size:0.6rem;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin:0 0 8px;">2025</p>
+                            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:800;color:#fff;margin:0 0 8px;line-height:1.4;">Olympiad Hunt 4.0 Prize Giving Ceremony</h3>
+                            <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.85rem;color:var(--text-secondary);margin:0;line-height:1.6;">Dhaka College Science Club is pleased to reveal the vibrant Prize Giving Ceremony of Olympiad Hunt 4.0!</p>
+                            <div style="margin-top:14px;display:flex;align-items:center;gap:6px;color:var(--gold-accent);font-family:'Orbitron',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:1px;"><i class="fa-brands fa-facebook"></i> VIEW ON FACEBOOK</div>
+                        </div>
+                    </a>
+
+                    <!-- Post 3 — Grand Iftar Mahfil -->
+                    <a href="posts.html" style="text-decoration:none;display:block;background:var(--card-bg);border:1px solid var(--border-color);border-radius:20px;overflow:hidden;transition:all 0.3s;" onmouseover="this.style.borderColor='#10b981';this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform='translateY(0)'">
+                        <div style="height:200px;overflow:hidden;position:relative;">
+                            <img src="image/p9.1.jpg" alt="Grand Iftar Mahfil" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='rgba(16,185,129,0.06)'">
+                            <div style="position:absolute;top:12px;left:12px;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);border-radius:20px;padding:4px 12px;font-family:'Orbitron',sans-serif;font-size:0.6rem;font-weight:700;color:#10b981;letter-spacing:1px;text-transform:uppercase;">Event</div>
+                        </div>
+                        <div style="padding:20px;">
+                            <p style="font-family:'Orbitron',sans-serif;font-size:0.6rem;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin:0 0 8px;">Ramadan 2026</p>
+                            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:800;color:#fff;margin:0 0 8px;line-height:1.4;">Grand Iftar Mahfil 2026 — Unity &amp; Brotherhood</h3>
+                            <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.85rem;color:var(--text-secondary);margin:0;line-height:1.6;">DCSC members gathered for an evening of brotherhood, reflection, and community spirit.</p>
+                            <div style="margin-top:14px;display:flex;align-items:center;gap:6px;color:#10b981;font-family:'Orbitron',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:1px;"><i class="fa-brands fa-facebook"></i> VIEW ON FACEBOOK</div>
+                        </div>
+                    </a>
+                </div>
+
+                    </section>
+
         <!-- GOOGLE MAPS -->
         <section class="section-padding bg-alt">
             <div class="section-container">
@@ -346,53 +406,56 @@
                     <div class="title-bar"></div>
                 </div>
                 <div style="border-radius:20px;overflow:hidden;border:1px solid var(--cyan-glow);box-shadow:0 0 30px rgba(0,242,254,0.25);">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.27028249622!2d90.38466637604473!3d23.73774898926079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8c7a6597a73%3A0xc3b8602b9386d634!2sDhaka%20College!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd" width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.3319123462643!2d90.3832324!3d23.735540600000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8c91e229e31%3A0x446311f7cc1fb402!2sDhaka%20College%20Science%20Club%20(DCSC)!5e0!3m2!1sen!2sbd!4v1786411236349!5m2!1sen!2sbd" width="100%" height="420" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+
                 </div>
             </div>
         </section>
     </main>
 
     <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-container" style="padding:40px 40px 30px; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:40px;">
-            <div>
-                <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-                    <img src="image/logo.png" alt="DCSC Logo" style="width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,240,255,0.35));" onerror="this.src='image/logo.svg'">
-                    <div>
-                        <span style="display:block;font-family:'Orbitron',sans-serif;font-size:0.65rem;font-weight:800;letter-spacing:2.5px;color:#fff;">DHAKA COLLEGE</span>
-                        <span style="display:block;font-family:'Orbitron',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:2px;color:var(--cyan-glow);">SCIENCE CLUB</span>
+            <footer class="footer">
+        <div class="footer-container" style="max-width:1250px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:40px;margin-bottom:40px;">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="image/logo.png" alt="DCSC Logo" onerror="this.src='image/logo.svg'">
+                    <div class="brand-text">
+                        <span class="brand-line1">DHAKA COLLEGE</span>
+                        <span class="brand-line2">SCIENCE CLUB</span>
                     </div>
                 </div>
-                <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;line-height:1.75;color:var(--text-secondary);margin:0 0 6px;">Spreading the knowledge of science to the utmost since 1996. <span style="color:var(--gold-accent);font-weight:600;">#ForClubAndCountry</span></p>
-                <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;color:var(--text-muted);margin:0 0 16px;">Demo site by <a href="https://adi.pro.bd/" target="_blank" style="color:var(--cyan-glow);text-decoration:underline;font-weight:600;">Abdullah Al Adib</a>, Inter 1st year, Dhaka College.</p>
-                <div style="display:flex;gap:10px;">
-                    <a href="https://facebook.com" target="_blank" style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid var(--border-color);display:flex;align-items:center;justify-content:center;color:var(--text-secondary);transition:all 0.3s;" onmouseover="this.style.borderColor='var(--cyan-glow)';this.style.color='var(--cyan-glow)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.color='var(--text-secondary)'"><i class="fa-brands fa-facebook-f" style="font-size:0.8rem;"></i></a>
-                    <a href="https://instagram.com" target="_blank" style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid var(--border-color);display:flex;align-items:center;justify-content:center;color:var(--text-secondary);transition:all 0.3s;" onmouseover="this.style.borderColor='var(--cyan-glow)';this.style.color='var(--cyan-glow)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.color='var(--text-secondary)'"><i class="fa-brands fa-instagram" style="font-size:0.8rem;"></i></a>
-                    <a href="https://youtube.com" target="_blank" style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid var(--border-color);display:flex;align-items:center;justify-content:center;color:var(--text-secondary);transition:all 0.3s;" onmouseover="this.style.borderColor='var(--cyan-glow)';this.style.color='var(--cyan-glow)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.color='var(--text-secondary)'"><i class="fa-brands fa-youtube" style="font-size:0.8rem;"></i></a>
+                <p style="color:var(--text-secondary);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;line-height:1.75;margin:0 0 8px;">Spreading the knowledge of science to the utmost since 1996.<br><span style="color:var(--gold-accent);font-weight:700;">#ForClubAndCountry</span></p>
+                <p style="color:var(--text-muted);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;line-height:1.6;margin:0 0 18px;">This website is made by <a href="https://adi.pro.bd/" target="_blank" style="color:var(--cyan-glow);text-decoration:none;font-weight:600;">Abdullah Al Adib</a></p>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                    <a href="https://www.facebook.com/dcsc.dc/" target="_blank" title="Facebook" style="width:38px;height:38px;border-radius:10px;background:rgba(24,119,242,0.12);border:1px solid rgba(24,119,242,0.3);display:flex;align-items:center;justify-content:center;color:#4267B2;font-size:1rem;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='rgba(24,119,242,0.28)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(24,119,242,0.12)';this.style.transform='translateY(0)'"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/dcsc_official/" target="_blank" title="Instagram" style="width:38px;height:38px;border-radius:10px;background:rgba(225,48,108,0.12);border:1px solid rgba(225,48,108,0.3);display:flex;align-items:center;justify-content:center;color:#e1306c;font-size:1rem;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='rgba(225,48,108,0.28)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(225,48,108,0.12)';this.style.transform='translateY(0)'"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="mailto:official.dcsc@gmail.com" title="Email" style="width:38px;height:38px;border-radius:10px;background:rgba(234,67,53,0.12);border:1px solid rgba(234,67,53,0.3);display:flex;align-items:center;justify-content:center;color:#ea4335;font-size:1rem;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='rgba(234,67,53,0.28)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(234,67,53,0.12)';this.style.transform='translateY(0)'"><i class="fa-solid fa-envelope"></i></a>
                 </div>
             </div>
-            <div>
-                <h4>Quick Navigation</h4>
-                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;">
-                    <li><a href="index.html" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Home</a></li>
-                    <li><a href="events.html" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Events</a></li>
-                    <li><a href="achievements.html" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Achievements</a></li>
-                    <li><a href="scilab.html" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Sci-Lab</a></li>
-                    <li><a href="join.html" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Join Club</a></li>
-                    <li><a href="wall-magazine.html" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Wall Magazine</a></li>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="committee.html">Committee</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="scilab.html">Sci-Lab</a></li>
+                    <li><a href="join.html">Join Club</a></li>
                 </ul>
             </div>
-            <div>
+            <div class="footer-col">
                 <h4>Official Contact</h4>
-                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;">
-                    <li style="display:flex;align-items:flex-start;gap:9px;color:var(--text-secondary);font-size:0.88rem;"><i class="fa-solid fa-location-dot" style="color:var(--cyan-glow);margin-top:3px;flex-shrink:0;"></i>Dhaka College, Dhaka-1205, Bangladesh</li>
-                    <li style="display:flex;align-items:center;gap:9px;color:var(--text-secondary);font-size:0.88rem;"><i class="fa-solid fa-envelope" style="color:var(--cyan-glow);"></i>official.dcsc@gmail.com</li>
-                    <li style="display:flex;align-items:center;gap:9px;color:var(--text-secondary);font-size:0.88rem;"><i class="fa-brands fa-instagram" style="color:var(--cyan-glow);"></i>@dcsc_official</li>
+                <ul class="contact-info">
+                    <li><i class="fa-solid fa-location-dot"></i> Dhaka College, Dhaka-1205, Bangladesh</li>
+                    <li><a href="mailto:official.dcsc@gmail.com" style="color:var(--text-secondary);text-decoration:none;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-envelope" style="color:var(--cyan-glow);"></i> official.dcsc@gmail.com</a></li>
+                    <li><a href="https://www.facebook.com/dcsc.dc/" target="_blank" style="color:var(--text-secondary);text-decoration:none;display:flex;align-items:center;gap:10px;"><i class="fa-brands fa-facebook" style="color:#4267B2;"></i> facebook.com/dcsc.dc</a></li>
+                    <li><a href="https://www.instagram.com/dcsc_official/" target="_blank" style="color:var(--text-secondary);text-decoration:none;display:flex;align-items:center;gap:10px;"><i class="fa-brands fa-instagram" style="color:#e1306c;"></i> @dcsc_official</a></li>
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom" style="text-align:center;padding:14px 40px;border-top:1px solid rgba(0,240,255,0.08);">
-            <p>&copy; 2026 Dhaka College Science Club (DCSC). All Rights Reserved.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Dhaka College Science Club &mdash; Est. 1996. All Rights Reserved.</p>
         </div>
     </footer>
 
