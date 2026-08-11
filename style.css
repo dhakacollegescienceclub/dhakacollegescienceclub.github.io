@@ -373,8 +373,8 @@
 
 /* ===== LIGHT MODE FOOTER — WHITE ===== */
 [data-theme="light"] .footer {
-    background: #fff !important;
-    border-top: 1px solid rgba(0,0,0,0.08) !important;
+    background: #F8FAFC !important;
+    border-top: 2px solid rgba(0,0,0,0.06) !important;
 }
 [data-theme="light"] .footer::before {
     background: linear-gradient(90deg, transparent, #0284C7, #B45309, #0284C7, transparent) !important;
@@ -387,25 +387,27 @@
 }
 [data-theme="light"] .footer-col h4 {
     color: #0F172A !important;
+    font-weight: 800 !important;
 }
 [data-theme="light"] .footer-col p,
 [data-theme="light"] .footer-col li,
 [data-theme="light"] .footer-col a,
 [data-theme="light"] .contact-info li,
 [data-theme="light"] .contact-info a {
-    color: #475569 !important;
+    color: #1E293B !important;
 }
 [data-theme="light"] .footer-col ul li a:hover,
 [data-theme="light"] .contact-info a:hover {
     color: #0284C7 !important;
 }
 [data-theme="light"] .footer-bottom {
-    color: #94A3B8 !important;
-    border-top-color: rgba(0, 0, 0, 0.06) !important;
+    color: #475569 !important;
+    border-top-color: rgba(0, 0, 0, 0.1) !important;
 }
 [data-theme="light"] .footer-bottom p {
-    color: #94A3B8 !important;
+    color: #475569 !important;
 }
+
 
 /* ===== LIGHT MODE — FIX HARDCODED color:#fff TEXT ===== */
 [data-theme="light"] [style*="color:#fff"],

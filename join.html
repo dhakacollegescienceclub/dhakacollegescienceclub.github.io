@@ -10,8 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Orbitron:wght@600;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@700;800;900&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css?v=9">
-    <!-- html2canvas for download -->
+    <!-- html2canvas + jsPDF for download -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <style>
         /* ===== JOIN PAGE STYLES ===== */
         .join-hero { text-align:center; padding: 80px 20px 50px; background: linear-gradient(135deg, rgba(0,240,255,0.06) 0%, rgba(255,215,0,0.04) 100%); }
@@ -81,41 +83,155 @@
         .cert-form-box { background:var(--card-bg); border:1px solid rgba(255,215,0,0.2); border-radius:22px; padding:36px; }
         .cert-form-box h3 { font-family:'Space Grotesk',sans-serif; font-size:1.15rem; font-weight:800; color:#fff; margin:0 0 20px; display:flex; align-items:center; gap:9px; }
 
-        /* Certificate Design */
+        /* Certificate Design — WHITE in both modes */
         #cert-canvas-wrap { position:relative; }
         #cert-preview {
-            width:100%; background:#0a0c14;
-            border:2px solid rgba(255,215,0,0.4); border-radius:16px; overflow:hidden;
-            box-shadow:0 20px 60px rgba(0,0,0,0.8), 0 0 50px rgba(255,215,0,0.08);
+            width:100%; background:#fff;
+            border:2px solid rgba(180,83,9,0.35); border-radius:16px; overflow:hidden;
+            box-shadow:0 10px 40px rgba(0,0,0,0.15);
             font-family:'Plus Jakarta Sans',sans-serif; position:relative;
         }
-        .cert-border { padding:4px; background:linear-gradient(135deg, rgba(255,215,0,0.5), rgba(0,240,255,0.3), rgba(255,215,0,0.5)); border-radius:16px; }
-        .cert-inner { background:linear-gradient(160deg, #080b18 0%, #0d1220 50%, #070c10 100%); border-radius:13px; padding:40px 50px; position:relative; overflow:hidden; }
-        .cert-inner::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); pointer-events:none; }
-        .cert-top { display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:28px; padding-bottom:20px; border-bottom:1px solid rgba(255,215,0,0.2); }
-        .cert-top img { width:52px; height:52px; object-fit:contain; filter:drop-shadow(0 0 8px rgba(255,215,0,0.4)); }
-        .cert-top-text h4 { font-family:'Orbitron',sans-serif; font-size:0.62rem; font-weight:800; letter-spacing:2.5px; color:#fff; margin:0; text-transform:uppercase; }
-        .cert-top-text p { font-family:'Orbitron',sans-serif; font-size:0.52rem; letter-spacing:2px; color:var(--gold-accent); margin:3px 0 0; text-transform:uppercase; }
+        .cert-border { padding:4px; background:linear-gradient(135deg, rgba(180,83,9,0.6), rgba(218,165,32,0.5), rgba(180,83,9,0.6)); border-radius:16px; }
+        .cert-inner { background:#fff; border-radius:13px; padding:40px 50px; position:relative; overflow:hidden; }
+        .cert-inner::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23B45309' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); pointer-events:none; }
+        .cert-top { display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:28px; padding-bottom:20px; border-bottom:2px solid rgba(180,83,9,0.2); }
+        .cert-top img { width:52px; height:52px; object-fit:contain; filter:drop-shadow(0 0 6px rgba(180,83,9,0.3)); }
+        .cert-top-text h4 { font-family:'Orbitron',sans-serif; font-size:0.62rem; font-weight:800; letter-spacing:2.5px; color:#0F172A; margin:0; text-transform:uppercase; }
+        .cert-top-text p { font-family:'Orbitron',sans-serif; font-size:0.52rem; letter-spacing:2px; color:#B45309; margin:3px 0 0; text-transform:uppercase; }
         .cert-title { text-align:center; margin-bottom:22px; }
-        .cert-title h3 { font-family:'Orbitron',sans-serif; font-size:clamp(0.7rem,2vw,1rem); font-weight:900; letter-spacing:4px; color:var(--gold-accent); text-transform:uppercase; margin:0 0 6px; }
-        .cert-title p { font-family:'Plus Jakarta Sans',sans-serif; font-size:0.75rem; color:var(--text-secondary); margin:0; }
-        .cert-name { text-align:center; font-family:'Space Grotesk',sans-serif; font-size:clamp(1.2rem,3vw,1.8rem); font-weight:900; color:#fff; margin:16px 0 8px; text-shadow:0 0 20px rgba(255,215,0,0.3); }
-        .cert-desc { text-align:center; font-family:'Plus Jakarta Sans',sans-serif; font-size:0.82rem; color:rgba(255,255,255,0.7); line-height:1.7; margin-bottom:24px; max-width:420px; margin-left:auto; margin-right:auto; }
+        .cert-title h3 { font-family:'Orbitron',sans-serif; font-size:clamp(0.7rem,2vw,1rem); font-weight:900; letter-spacing:4px; color:#B45309; text-transform:uppercase; margin:0 0 6px; }
+        .cert-title p { font-family:'Plus Jakarta Sans',sans-serif; font-size:0.75rem; color:#64748B; margin:0; }
+        .cert-name { text-align:center; font-family:'Space Grotesk',sans-serif; font-size:clamp(1.2rem,3vw,1.8rem); font-weight:900; color:#0F172A; margin:16px 0 8px; text-shadow:none; }
+        .cert-desc { text-align:center; font-family:'Plus Jakarta Sans',sans-serif; font-size:0.82rem; color:#475569; line-height:1.7; margin-bottom:24px; max-width:420px; margin-left:auto; margin-right:auto; }
         .cert-meta { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:24px; }
-        .cert-meta-item { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:10px; padding:10px 14px; }
-        .cert-meta-item span { display:block; font-size:0.62rem; color:var(--text-muted); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:3px; }
-        .cert-meta-item strong { font-size:0.8rem; color:#fff; font-family:'Space Grotesk',sans-serif; }
-        .cert-sig-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; padding-top:20px; border-top:1px solid rgba(255,215,0,0.15); }
+        .cert-meta-item { background:rgba(180,83,9,0.04); border:1px solid rgba(180,83,9,0.12); border-radius:10px; padding:10px 14px; }
+        .cert-meta-item span { display:block; font-size:0.62rem; color:#64748B; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:3px; }
+        .cert-meta-item strong { font-size:0.8rem; color:#0F172A; font-family:'Space Grotesk',sans-serif; }
+        .cert-sig-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; padding-top:20px; border-top:2px solid rgba(180,83,9,0.15); }
         .cert-sig { text-align:center; }
-        .cert-sig-line { height:1px; background:rgba(255,255,255,0.2); margin-bottom:6px; }
-        .cert-sig span { font-size:0.68rem; color:var(--text-muted); font-family:'Space Grotesk',sans-serif; letter-spacing:0.5px; }
-        .cert-sig strong { display:block; font-size:0.78rem; color:rgba(255,255,255,0.85); margin-bottom:2px; }
-        .cert-stamp { position:absolute; bottom:40px; right:50px; width:70px; height:70px; border-radius:50%; border:2px solid rgba(0,240,255,0.4); display:flex; align-items:center; justify-content:center; opacity:0.35; }
-        .cert-stamp i { font-size:1.8rem; color:var(--cyan-glow); }
-        .cert-id-badge { display:inline-block; margin:0 auto 16px; padding:4px 16px; background:rgba(255,215,0,0.1); border:1px solid rgba(255,215,0,0.3); border-radius:30px; font-size:0.68rem; color:var(--gold-accent); font-family:'Orbitron',sans-serif; letter-spacing:1px; }
+        .cert-sig-line { height:1px; background:rgba(0,0,0,0.15); margin-bottom:6px; }
+        .cert-sig span { font-size:0.68rem; color:#64748B; font-family:'Space Grotesk',sans-serif; letter-spacing:0.5px; }
+        .cert-sig strong { display:block; font-size:0.78rem; color:#0F172A; margin-bottom:2px; }
+        .cert-stamp { position:absolute; bottom:40px; right:50px; width:70px; height:70px; border-radius:50%; border:2px solid rgba(180,83,9,0.3); display:flex; align-items:center; justify-content:center; opacity:0.3; }
+        .cert-stamp i { font-size:1.8rem; color:#B45309; }
+        .cert-id-badge { display:inline-block; margin:0 auto 16px; padding:4px 16px; background:rgba(180,83,9,0.08); border:1px solid rgba(180,83,9,0.25); border-radius:30px; font-size:0.68rem; color:#B45309; font-family:'Orbitron',sans-serif; letter-spacing:1px; }
+
         .cert-download-btn { width:100%; padding:16px; background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,165,0,0.1)); border:1px solid rgba(255,215,0,0.4); border-radius:14px; color:var(--gold-accent); font-family:'Space Grotesk',sans-serif; font-weight:800; font-size:1rem; cursor:pointer; transition:all 0.3s; display:flex; align-items:center; justify-content:center; gap:10px; margin-top:20px; }
         .cert-download-btn:hover { background:linear-gradient(135deg,rgba(255,215,0,0.25),rgba(255,165,0,0.18)); box-shadow:0 8px 24px rgba(255,215,0,0.2); transform:translateY(-2px); }
+
+        /* ===== JOIN PAGE — LIGHT MODE ===== */
+        [data-theme="light"] .join-hero {
+            background: linear-gradient(135deg, rgba(2,132,199,0.06) 0%, rgba(180,83,9,0.04) 100%) !important;
+        }
+        [data-theme="light"] .join-hero h1 {
+            background: linear-gradient(135deg, #0F172A, #0284C7) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+        [data-theme="light"] .join-form-card {
+            background: #fff !important;
+            border-color: rgba(0,0,0,0.1) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
+        }
+        [data-theme="light"] .join-form-card h2 {
+            color: #0F172A !important;
+        }
+        [data-theme="light"] .fgrp input,
+        [data-theme="light"] .fgrp select,
+        [data-theme="light"] .fgrp textarea {
+            background: #F1F5F9 !important;
+            border-color: rgba(0,0,0,0.12) !important;
+            color: #0F172A !important;
+        }
+        [data-theme="light"] .fgrp input:focus,
+        [data-theme="light"] .fgrp select:focus,
+        [data-theme="light"] .fgrp textarea:focus {
+            border-color: #0284C7 !important;
+            box-shadow: 0 0 0 3px rgba(2,132,199,0.12) !important;
+        }
+        [data-theme="light"] .fgrp label {
+            color: #334155 !important;
+        }
+        [data-theme="light"] .submit-btn {
+            background: linear-gradient(135deg, #0284C7, #0052D4) !important;
+            color: #fff !important;
+        }
+
+        /* ID Card — WHITE in light mode */
+        [data-theme="light"] .id-card {
+            background: #fff !important;
+            border-color: rgba(0,0,0,0.12) !important;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1) !important;
+        }
+        [data-theme="light"] .id-card-top {
+            background: linear-gradient(135deg, rgba(2,132,199,0.08), rgba(180,83,9,0.05)) !important;
+            border-bottom-color: rgba(0,0,0,0.08) !important;
+        }
+        [data-theme="light"] .id-card-org h4 {
+            color: #0F172A !important;
+        }
+        [data-theme="light"] .id-card-org p {
+            color: #0284C7 !important;
+        }
+        [data-theme="light"] .id-photo-box {
+            background: #F1F5F9 !important;
+            border-color: rgba(2,132,199,0.3) !important;
+        }
+        [data-theme="light"] .id-photo-box i {
+            color: rgba(2,132,199,0.4) !important;
+        }
+        [data-theme="light"] .id-info h3 {
+            color: #0F172A !important;
+        }
+        [data-theme="light"] .id-badge {
+            background: rgba(2,132,199,0.08) !important;
+            color: #0284C7 !important;
+            border-color: rgba(2,132,199,0.25) !important;
+        }
+        [data-theme="light"] .id-row span.lbl {
+            color: #64748B !important;
+        }
+        [data-theme="light"] .id-row span.val {
+            color: #1E293B !important;
+        }
+        [data-theme="light"] .id-card-footer {
+            background: #F8FAFC !important;
+            border-top-color: rgba(0,0,0,0.06) !important;
+        }
+        [data-theme="light"] .id-card-footer span {
+            color: #64748B !important;
+        }
+        [data-theme="light"] .id-card-footer .id-num {
+            color: #B45309 !important;
+        }
+
+        /* Download buttons */
+        [data-theme="light"] .download-btn {
+            background: rgba(2,132,199,0.08) !important;
+            border-color: rgba(2,132,199,0.3) !important;
+            color: #0284C7 !important;
+        }
+        [data-theme="light"] .download-btn:hover {
+            background: rgba(2,132,199,0.15) !important;
+        }
+
+
+
+        /* Certificate Section — light mode form fixes only */
+        [data-theme="light"] .cert-section-head h2 {
+            color: #0F172A !important;
+        }
+        [data-theme="light"] .cert-form-box {
+            background: #fff !important;
+            border-color: rgba(0,0,0,0.1) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
+        }
+        [data-theme="light"] .cert-form-box h3 {
+            color: #0F172A !important;
+        }
+
     </style>
+
 </head>
 <body>
     <canvas id="bg-canvas"></canvas>
@@ -247,9 +363,15 @@
                         <span class="id-num" id="id-num">DCSC-0000</span>
                     </div>
                 </div>
-                <button class="download-btn" onclick="downloadIDCard()">
-                    <i class="fa-solid fa-download"></i> Download ID Card
-                </button>
+                <div style="display:flex;gap:10px;max-width:400px;margin:0 auto;">
+                    <button class="download-btn" onclick="downloadIDCard('png')" style="flex:1;">
+                        <i class="fa-solid fa-image"></i> PNG
+                    </button>
+                    <button class="download-btn" onclick="downloadIDCard('pdf')" style="flex:1;">
+                        <i class="fa-solid fa-file-pdf"></i> PDF
+                    </button>
+                </div>
+
                 <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.78rem;color:var(--text-muted);text-align:center;max-width:400px;margin:0 auto;">
                     This is a provisional/demo ID card. Official ID cards are issued after verification by the club committee.
                 </p>
@@ -305,9 +427,15 @@
                         <label>Countersigned By</label>
                         <input type="text" id="cert-signer2" placeholder="e.g. Shahriar Samir — Gen. Secretary" oninput="updateCert()" value="Shahriar Samir — General Secretary, EC 2024–25">
                     </div>
-                    <button class="cert-download-btn" onclick="downloadCert()">
-                        <i class="fa-solid fa-file-arrow-down"></i> Download Certificate
-                    </button>
+                    <div style="display:flex;gap:10px;margin-top:10px;">
+                        <button class="cert-download-btn" onclick="downloadCert('png')" style="flex:1;">
+                            <i class="fa-solid fa-image"></i> PNG
+                        </button>
+                        <button class="cert-download-btn" onclick="downloadCert('pdf')" style="flex:1;">
+                            <i class="fa-solid fa-file-pdf"></i> PDF
+                        </button>
+                    </div>
+
                 </div>
 
                 <!-- Certificate Preview -->
@@ -437,15 +565,30 @@
         reader.readAsDataURL(file);
     }
 
-    function downloadIDCard(){
+    function downloadIDCard(format){
         const card = document.getElementById('member-id-card');
-        html2canvas(card, {scale:3, backgroundColor:null, useCORS:true}).then(canvas => {
-            const link = document.createElement('a');
-            link.download = 'DCSC-Member-ID.png';
-            link.href = canvas.toDataURL('image/png');
-            link.click();
+        const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+        const bgColor = isDark ? '#0a0a1a' : '#ffffff';
+        html2canvas(card, {scale:3, backgroundColor:bgColor, useCORS:true}).then(canvas => {
+            if(format === 'pdf'){
+                const { jsPDF } = window.jspdf;
+                const imgData = canvas.toDataURL('image/png');
+                const cw = canvas.width;
+                const ch = canvas.height;
+                const pdfW = 100; // mm
+                const pdfH = (ch / cw) * pdfW;
+                const pdf = new jsPDF({ orientation: pdfH > pdfW ? 'portrait' : 'landscape', unit:'mm', format:[pdfW+10, pdfH+10] });
+                pdf.addImage(imgData, 'PNG', 5, 5, pdfW, pdfH);
+                pdf.save('DCSC-Member-ID.pdf');
+            } else {
+                const link = document.createElement('a');
+                link.download = 'DCSC-Member-ID.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }
         });
     }
+
 
     function submitApp(){
         const name = document.getElementById('jn-name').value;
@@ -493,16 +636,29 @@
         if(signer2) document.getElementById('cert-sig2').textContent = signer2;
     }
 
-    function downloadCert(){
+    function downloadCert(format){
         const wrap = document.getElementById('cert-canvas-wrap');
-        html2canvas(wrap, {scale:3, backgroundColor:'#080b18', useCORS:true}).then(canvas => {
-            const link = document.createElement('a');
+        html2canvas(wrap, {scale:3, backgroundColor:'#ffffff', useCORS:true}).then(canvas => {
             const name = document.getElementById('cert-name').value || 'Certificate';
-            link.download = 'DCSC-Certificate-' + name.replace(/\s+/g,'-') + '.png';
-            link.href = canvas.toDataURL('image/png');
-            link.click();
+            if(format === 'pdf'){
+                const { jsPDF } = window.jspdf;
+                const imgData = canvas.toDataURL('image/png');
+                const cw = canvas.width;
+                const ch = canvas.height;
+                const pdfW = 210; // A4 width mm
+                const pdfH = (ch / cw) * pdfW;
+                const pdf = new jsPDF({ orientation: 'landscape', unit:'mm', format:[pdfW+20, pdfH+20] });
+                pdf.addImage(imgData, 'PNG', 10, 10, pdfW, pdfH);
+                pdf.save('DCSC-Certificate-' + name.replace(/\s+/g,'-') + '.pdf');
+            } else {
+                const link = document.createElement('a');
+                link.download = 'DCSC-Certificate-' + name.replace(/\s+/g,'-') + '.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }
         });
     }
+
     </script>
 </body>
 </html>
