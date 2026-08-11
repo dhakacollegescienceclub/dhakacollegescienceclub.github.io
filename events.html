@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events & Festivals | Dhaka College Science Club</title>
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Orbitron:wght@700;800;900&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=9">
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="logo-shield">
+                    <img src="image/logo.png" alt="DCSC Shield Logo" onerror="this.src='image/logo.svg'">
+                </div>
+                <div class="brand-text">
+                    <span class="brand-line1">DHAKA COLLEGE</span>
+                    <span class="brand-line2">SCIENCE CLUB</span>
+                </div>
+            </a>
+            <nav class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link active">Events</a>
+                <a href="achievements.html" class="nav-link">Achievements</a>
+                <a href="committee.html" class="nav-link">Committee</a>
+                <a href="scilab.html" class="nav-link">Sci-Lab</a>
+                
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">More <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="wall-magazine.html" class="dropdown-item"><i class="fa-solid fa-newspaper"></i> Wall Magazine</a>
+                        <a href="posts.html" class="dropdown-item"><i class="fa-solid fa-bullhorn"></i> Posts & News</a>
+                        <a href="gallery.html" class="dropdown-item"><i class="fa-solid fa-images"></i> Photo Gallery</a>
+                        <a href="about.html" class="dropdown-item"><i class="fa-solid fa-circle-info"></i> Info & Contact</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="nav-controls">
+                <button class="icon-btn" id="theme-btn" title="Toggle Dark/Light Mode"><i class="fa-solid fa-moon"></i></button>
+                <a href="join.html" class="btn-primary"><i class="fa-solid fa-user-plus"></i> Join Club</a>
+                <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <h1 class="page-title">Events &amp; Festivals</h1>
+            <p class="page-subtitle">Major Events Organized by Dhaka College Science Club</p>
+        </section>
+
+        <style>
+            /* Mixed event card styles */
+            .ev-grid { display: grid; gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+            /* Wide horizontal card (landscape photo) */
+            .ev-card-h { display: grid; grid-template-columns: 1.2fr 1fr; border-radius: 20px; overflow: hidden; border: 1px solid rgba(0,240,255,0.2); box-shadow: 0 10px 40px rgba(0,0,0,0.4); background: var(--card-bg); }
+            .ev-card-h.rev { grid-template-columns: 1fr 1.2fr; }
+            .ev-card-h.rev .ev-img { order: 2; }
+            .ev-card-h.rev .ev-body { order: 1; }
+            /* Tall vertical card (portrait photo + info side) */
+            .ev-card-v { display: grid; grid-template-columns: 1fr 1.5fr; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,215,0,0.2); box-shadow: 0 10px 40px rgba(0,0,0,0.4); background: var(--card-bg); }
+            /* Small info cards (compact) */
+            .ev-card-sm { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+            .ev-card-sm-item { border-radius: 18px; overflow: hidden; border: 1px solid rgba(0,240,255,0.15); background: var(--card-bg); display: grid; grid-template-columns: 1fr 1.4fr; box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+            /* Shared */
+            .ev-img { overflow: hidden; }
+            .ev-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; display: block; }
+            .ev-card-h:hover .ev-img img, .ev-card-v:hover .ev-img img, .ev-card-sm-item:hover .ev-img img { transform: scale(1.06); }
+            .ev-body { padding: 36px; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+            .ev-body-sm { padding: 24px; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+            .ev-tag { display: inline-flex; align-items: center; gap: 6px; font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cyan-glow); border: 1px solid rgba(0,240,255,0.3); padding: 4px 12px; border-radius: 30px; width: fit-content; }
+            .ev-tag.gold { color: var(--gold-accent); border-color: rgba(255,215,0,0.3); }
+            .ev-tag.green { color: #10b981; border-color: rgba(16,185,129,0.3); }
+            .ev-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 900; color: #fff; line-height: 1.2; margin: 0; }
+            .ev-title-sm { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 800; color: #fff; line-height: 1.25; margin: 0; }
+            .ev-desc { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-secondary); font-size: 0.92rem; line-height: 1.7; margin: 0; }
+            .ev-meta { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; color: var(--text-secondary); background: rgba(255,255,255,0.04); padding: 12px 16px; border-radius: 10px; display: flex; flex-direction: column; gap: 6px; }
+            .ev-meta span { display: flex; align-items: center; gap: 8px; }
+            .ev-meta i { color: var(--cyan-glow); width: 14px; }
+            .ev-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: 50px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; text-decoration: none; transition: all 0.3s; width: fit-content; }
+            .ev-btn-primary { background: linear-gradient(135deg, var(--cyan-glow), #4facfe); color: #000; }
+            .ev-btn-primary:hover { box-shadow: 0 0 20px rgba(0,240,255,0.4); transform: translateY(-2px); }
+            .ev-btn-outline { border: 1px solid rgba(255,255,255,0.2); color: var(--text-secondary); }
+            .ev-btn-outline:hover { border-color: var(--cyan-glow); color: var(--cyan-glow); }
+            @media(max-width:768px){ .ev-card-h, .ev-card-h.rev, .ev-card-v, .ev-card-sm-item { grid-template-columns: 1fr; } .ev-card-h .ev-img, .ev-card-v .ev-img, .ev-card-sm-item .ev-img { height: 220px; } .ev-card-sm { grid-template-columns: 1fr; } .ev-card-h.rev .ev-img { order: 0; } .ev-card-h.rev .ev-body { order: 0; } }
+        </style>
+
+        <section class="section-padding">
+            <div class="ev-grid">
+
+                <!-- E1: AI NeuroVerse 2026 — Wide Horizontal (Landscape) -->
+                <div class="ev-card-h animate-on-scroll" style="height:380px;">
+                    <div class="ev-img">
+                        <img src="image/e1.jpg" alt="AI NeuroVerse 2026" onerror="this.src='https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=900&q=80'">
+                    </div>
+                    <div class="ev-body">
+                        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                            <span class="ev-tag"><i class="fa-solid fa-microchip"></i> Intra Festival</span>
+                            <span style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;color:var(--text-muted);font-weight:600;display:flex;align-items:center;gap:5px;"><i class="fa-solid fa-calendar" style="color:var(--cyan-glow);"></i> Aug 10–11, 2026</span>
+                        </div>
+                        <h2 class="ev-title">DCSC AI NeuroVerse 2026</h2>
+                        <p class="ev-desc">Showcase your expertise in AI &amp; technology — solo/team quizzes, art, short films, and web design. A grand celebration of innovation at Dhaka College.</p>
+                        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                            <a href="https://www.facebook.com/events/28052714751025898" target="_blank" class="ev-btn ev-btn-primary"><i class="fa-brands fa-facebook"></i> Event Details</a>
+                            <a href="gallery.html" class="ev-btn ev-btn-outline"><i class="fa-solid fa-images"></i> View Photos</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E2 + E3: Two square cards side by side -->
+                <div class="ev-card-sm animate-on-scroll">
+                    <!-- E2: Olympiad Hunt 4.0 — Square -->
+                    <div class="ev-card-sm-item">
+                        <div class="ev-img" style="height:100%;min-height:250px;">
+                            <img src="image/e2.jpg" alt="Olympiad Hunt 4.0" onerror="this.src='https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80'">
+                        </div>
+                        <div class="ev-body-sm">
+                            <span class="ev-tag gold"><i class="fa-solid fa-trophy"></i> Prize Giving</span>
+                            <h3 class="ev-title-sm">Olympiad Hunt 4.0 — Prize Giving</h3>
+                            <p class="ev-desc" style="font-size:0.85rem;">Honoring champions at the grand closing ceremony.</p>
+                            <div class="ev-meta">
+                                <span><i class="fa-solid fa-calendar"></i> 02 Jun, 2026</span>
+                            </div>
+                            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                                <a href="https://www.facebook.com/dcsc.dc/posts/pfbid0fqWbawpwdmbPjJU8ARpNnYz47nus37UZcLLyY63cpQTJKT4HFE7CYgfNTdXng7hsl" target="_blank" class="ev-btn ev-btn-primary" style="font-size:0.8rem;padding:7px 14px;"><i class="fa-brands fa-facebook"></i> Details</a>
+                                <a href="gallery.html" class="ev-btn ev-btn-outline" style="font-size:0.8rem;padding:7px 14px;"><i class="fa-solid fa-images"></i> Photos</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- E3: Grand Iftar Mahfil — Square -->
+                    <div class="ev-card-sm-item" style="border-color:rgba(255,215,0,0.2);">
+                        <div class="ev-img" style="height:100%;min-height:250px;">
+                            <img src="image/e3.jpg" alt="Grand Iftar Mahfil" onerror="this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=600&q=80'">
+                        </div>
+                        <div class="ev-body-sm">
+                            <span class="ev-tag gold"><i class="fa-solid fa-star-and-crescent"></i> Reunion</span>
+                            <h3 class="ev-title-sm">Grand Iftar Mahfil 2026</h3>
+                            <p class="ev-desc" style="font-size:0.85rem;">Alumni &amp; members united in gratitude &amp; fellowship.</p>
+                            <div class="ev-meta">
+                                <span><i class="fa-solid fa-calendar"></i> 07 Mar, 2026</span>
+                            </div>
+                            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                                <a href="https://www.facebook.com/events/2064513734405731" target="_blank" class="ev-btn ev-btn-primary" style="font-size:0.8rem;padding:7px 14px;"><i class="fa-brands fa-facebook"></i> Details</a>
+                                <a href="gallery.html" class="ev-btn ev-btn-outline" style="font-size:0.8rem;padding:7px 14px;"><i class="fa-solid fa-images"></i> Photos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E4: Everything About Quizzing — Square + Info side -->
+                <div class="ev-card-sm-item animate-on-scroll" style="max-width:100%;border-color:rgba(0,240,255,0.2);">
+                    <div class="ev-img" style="height:320px;">
+                        <img src="image/e4.jpg" alt="Everything About Quizzing" onerror="this.src='https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=600&q=80'">
+                    </div>
+                    <div class="ev-body-sm" style="padding:32px;justify-content:center;gap:14px;">
+                        <span class="ev-tag"><i class="fa-solid fa-lightbulb"></i> Special Session</span>
+                        <h2 class="ev-title">Everything About Quizzing</h2>
+                        <p class="ev-desc">Conducted by <strong style="color:#fff;">Quizmaster Azmain Tahmid</strong>, Former Head of Quiz &amp; Former Quizzer of DC ULKA — quiz basics, preparation methods &amp; resources.</p>
+                        <div class="ev-meta">
+                            <span><i class="fa-solid fa-calendar"></i> 11th December, 2025</span>
+                            <span><i class="fa-solid fa-clock"></i> 10:30 AM</span>
+                            <span><i class="fa-solid fa-location-dot"></i> Shaheed A.N.M. Najib Uddan Khan Khurram Auditorium, Dhaka College</span>
+                        </div>
+                        <a href="https://www.facebook.com/dcsc.dc/posts/pfbid02cRHzKt5qDJq1JVaKNbRpfaheVXD5RAB5RRfTpsJSQaDXa6gMyVWRvKCdMLnYBxZal" target="_blank" class="ev-btn ev-btn-primary"><i class="fa-brands fa-facebook"></i> View Post</a>
+                    </div>
+                </div>
+
+                <!-- E5: Study in U.S. — Tall Vertical -->
+                <div class="ev-card-v animate-on-scroll" style="min-height:360px;">
+                    <div class="ev-img">
+                        <img src="image/e5.jpg" alt="Studying in the U.S." onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80'">
+                    </div>
+                    <div class="ev-body">
+                        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                            <span class="ev-tag" style="color:#6366f1;border-color:rgba(99,102,241,0.3);"><i class="fa-solid fa-graduation-cap"></i> Special Session</span>
+                            <span class="ev-tag" style="color:#10b981;border-color:rgba(16,185,129,0.3);"><i class="fa-solid fa-handshake"></i> EdBridge Scholars</span>
+                        </div>
+                        <h2 class="ev-title">Studying in the U.S. — Everything You Need to Know</h2>
+                        <p class="ev-desc">Led by <strong style="color:#fff;">Abrar Azim Hrittek</strong> (University of British Columbia) — admissions, scholarships &amp; studying abroad insights. Take the first step toward your U.S. academic journey.</p>
+                        <div class="ev-meta">
+                            <span><i class="fa-solid fa-calendar"></i> 15 November, 2025</span>
+                            <span><i class="fa-solid fa-clock"></i> 10:00 PM</span>
+                        </div>
+                        <a href="https://www.facebook.com/events/25797480906544399" target="_blank" class="ev-btn ev-btn-primary"><i class="fa-brands fa-facebook"></i> Event Details</a>
+                    </div>
+                </div>
+
+                <!-- E6: Intra Science Festival 2025 — Full Width Big Card -->
+                <div class="animate-on-scroll" style="border-radius:20px;overflow:hidden;border:1px solid rgba(16,185,129,0.25);box-shadow:0 10px 40px rgba(0,0,0,0.5);background:var(--card-bg);">
+                    <div style="position:relative;height:320px;overflow:hidden;">
+                        <img src="image/e6.jpg" alt="Intra Science Festival 2025" style="width:100%;height:100%;object-fit:cover;transition:transform 0.6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" onerror="this.src='https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=1400&q=80'">
+                        <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.3) 60%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:36px;">
+                            <div style="display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;">
+                                <span class="ev-tag green"><i class="fa-solid fa-flask"></i> Intra Festival</span>
+                                <span class="ev-tag gold"><i class="fa-solid fa-star"></i> Freshers' Orientation</span>
+                            </div>
+                            <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:900;color:#fff;margin:0 0 8px;line-height:1.2;">DCSC Intra Science Festival &amp; Freshers' Orientation 2025</h2>
+                            <p style="font-family:'Plus Jakarta Sans',sans-serif;color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;font-style:italic;">&ldquo;Somewhere, something incredible is waiting to be known.&rdquo; — Carl Sagan</p>
+                        </div>
+                    </div>
+                    <div style="padding:30px 36px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+                        <div style="flex:1;min-width:260px;">
+                            <p class="ev-desc">DCSC proudly presents the Intra Science Festival &amp; Freshers' Orientation 2025. <strong style="color:#fff;">Eligibility: Intermediate-level students of Dhaka College only.</strong> Both offline &amp; online events available. 27th batch orientation included.</p>
+                            <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+                                <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.82rem;color:var(--text-secondary);display:flex;align-items:center;gap:6px;"><i class="fa-solid fa-check" style="color:#10b981;"></i>Science Olympiad · Solo Quiz · Calculus Combat</span>
+                            </div>
+                            <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;">
+                                <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.82rem;color:var(--text-secondary);display:flex;align-items:center;gap:6px;"><i class="fa-solid fa-check" style="color:#10b981;"></i>Wall Magazine · Project Display · Scrapbook · FC 26</span>
+                            </div>
+                            <div style="display:flex;gap:8px;margin-top:6px;">
+                                <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.82rem;color:var(--text-secondary);display:flex;align-items:center;gap:6px;"><i class="fa-solid fa-check" style="color:var(--cyan-glow);"></i>Online: Designers' Hunt · Photography · Sci-fi Writing</span>
+                            </div>
+                        </div>
+                        <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start;">
+                            <span style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;font-weight:700;color:var(--gold-accent);letter-spacing:1px;">#Tunneling_beyond_Barriers</span>
+                            <a href="https://www.facebook.com/events/766467783082427/" target="_blank" class="ev-btn ev-btn-primary" style="font-size:0.95rem;"><i class="fa-brands fa-facebook"></i> Full Event Details</a>
+                            <a href="gallery.html" class="ev-btn ev-btn-outline" style="font-size:0.88rem;"><i class="fa-solid fa-images"></i> View Photos</a>
+                        </div>
+                    </div>
+
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-container" style="padding:40px 40px 30px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;">
+            <div>
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+                    <img src="image/logo.png" alt="DCSC Logo" style="width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,240,255,0.35));" onerror="this.src='image/logo.svg'">
+                    <div>
+                        <span style="display:block;font-family:'Orbitron',sans-serif;font-size:0.65rem;font-weight:800;letter-spacing:2.5px;color:#fff;">DHAKA COLLEGE</span>
+                        <span style="display:block;font-family:'Orbitron',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:2px;color:var(--cyan-glow);">SCIENCE CLUB</span>
+                    </div>
+                </div>
+                <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;line-height:1.75;color:var(--text-secondary);margin:0 0 6px;">Spreading the knowledge of science to the utmost since 1996. <span style="color:var(--gold-accent);font-weight:600;">#ForClubAndCountry</span></p>
+                <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;color:var(--text-muted);margin:0 0 16px;">Demo site by <a href="https://adi.pro.bd/" target="_blank" style="color:var(--cyan-glow);text-decoration:underline;font-weight:600;">Abdullah Al Adib</a>, Inter 1st year, Dhaka College.</p>
+            </div>
+            <div>
+                <h4 style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--cyan-glow);margin-bottom:16px;">Quick Navigation</h4>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;">
+                    <li><a href="index.html" style="color:var(--text-secondary);text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;">Home</a></li>
+                    <li><a href="events.html" style="color:var(--text-secondary);text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;">Events</a></li>
+                    <li><a href="achievements.html" style="color:var(--text-secondary);text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;">Achievements</a></li>
+                    <li><a href="scilab.html" style="color:var(--text-secondary);text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;">Sci-Lab</a></li>
+                    <li><a href="join.html" style="color:var(--text-secondary);text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;">Join Club</a></li>
+                    <li><a href="wall-magazine.html" style="color:var(--text-secondary);text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;">Wall Magazine</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--cyan-glow);margin-bottom:16px;">Official Contact</h4>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;">
+                    <li style="display:flex;align-items:flex-start;gap:9px;color:var(--text-secondary);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;"><i class="fa-solid fa-location-dot" style="color:var(--cyan-glow);margin-top:3px;flex-shrink:0;"></i>Dhaka College, Dhaka-1205, Bangladesh</li>
+                    <li style="display:flex;align-items:center;gap:9px;color:var(--text-secondary);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;"><i class="fa-solid fa-envelope" style="color:var(--cyan-glow);"></i>official.dcsc@gmail.com</li>
+                    <li style="display:flex;align-items:center;gap:9px;color:var(--text-secondary);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;"><i class="fa-brands fa-instagram" style="color:var(--cyan-glow);"></i>@dcsc_official</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom" style="text-align:center;padding:14px 40px;border-top:1px solid rgba(0,240,255,0.08);">
+            <p style="font-family:'Space Grotesk',sans-serif;font-size:0.8rem;color:var(--text-muted);">&copy; 2026 Dhaka College Science Club (DCSC). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="app.js?v=9"></script>
+</body>
+</html>

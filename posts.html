@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts & News | Dhaka College Science Club</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Orbitron:wght@600;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=9">
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <!-- SHARED BUG-FREE NAVBAR -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="logo-shield">
+                    <img src="image/logo.png" alt="DCSC Shield Logo" onerror="this.src='image/logo.svg'">
+                </div>
+                <div class="brand-text">
+                    <span class="brand-line1">DHAKA COLLEGE</span>
+                    <span class="brand-line2">SCIENCE CLUB</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="achievements.html" class="nav-link">Achievements</a>
+                <a href="committee.html" class="nav-link">Committee</a>
+                <a href="scilab.html" class="nav-link">Sci-Lab</a>
+                
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">More <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="wall-magazine.html" class="dropdown-item"><i class="fa-solid fa-newspaper"></i> Wall Magazine</a>
+                        <a href="achievements.html" class="dropdown-item active"><i class="fa-solid fa-bullhorn"></i> Posts & News</a>
+                        <a href="gallery.html" class="dropdown-item"><i class="fa-solid fa-images"></i> Photo Gallery</a>
+                        <a href="about.html" class="dropdown-item"><i class="fa-solid fa-circle-info"></i> Info & Contact</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="nav-controls">
+                <button class="icon-btn" id="theme-btn" title="Toggle Dark/Light Mode"><i class="fa-solid fa-moon"></i></button>
+                <button class="lang-btn" id="lang-btn"><span id="lang-indicator">EN</span></button>
+                <a href="join.html" class="btn-primary">
+                    <i class="fa-solid fa-user-plus"></i> <span>Join Club</span>
+                </a>
+                <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <h1 class="page-title" data-en="Posts & News Feed" data-bn="সাফল্যের রেকর্ড ও সর্বশেষ নোটিশ">Posts & News Feed</h1>
+            <p class="page-subtitle">Hall of Fame of Dhaka College Science Club</p>
+        </section>
+
+        <section class="section-padding">
+            <div class="section-container">
+                <div class="posts-grid">
+                    <div class="post-card animate-on-scroll">
+                        <div class="post-media">
+                            <img src="image/p1.jpg" alt="July Mass Uprising Memorial" class="post-img">
+                        </div>
+                        <div class="post-body">
+                            <div style="font-size:0.8rem; color:var(--cyan-glow); font-weight:700; margin-bottom:6px;">Memorial</div>
+                            <h3 class="post-title">July Mass Uprising Memorial</h3>
+                            <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:16px;">July is not just a month — it is a symbol of courage, sacrifice, and change.</p>
+                            <button class="btn-primary" onclick="openPostModal(1)">Read Full Story</button>
+                        </div>
+                    </div>
+                    <div class="post-card animate-on-scroll">
+                        <div class="post-media">
+                            <img src="image/p2.1.jpg" alt="Olympiad Hunt 4.0 Prize Giving Ceremony" class="post-img">
+                        </div>
+                        <div class="post-body">
+                            <div style="font-size:0.8rem; color:var(--cyan-glow); font-weight:700; margin-bottom:6px;">Prize Giving</div>
+                            <h3 class="post-title">Olympiad Hunt 4.0 Prize Giving Ceremony</h3>
+                            <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:16px;">Dhaka College Science Club is pleased to reveal the vibrant Prize Giving Ceremony of Olympiad Hunt 4.0!</p>
+                            <button class="btn-primary" onclick="openPostModal(2)">Read Full Story</button>
+                        </div>
+                    </div>
+                    <div class="post-card animate-on-scroll">
+                        <div class="post-media">
+                            <img src="image/p3.1.jpg" alt="Olympiad Hunt - Talent Hunt 2026" class="post-img">
+                        </div>
+                        <div class="post-body">
+                            <div style="font-size:0.8rem; color:var(--cyan-glow); font-weight:700; margin-bottom:6px;">Olympiad</div>
+                            <h3 class="post-title">Olympiad Hunt - Talent Hunt 2026</h3>
+                            <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:16px;">Olympiad Hunt: A day full of learning, excitement, and healthy competition.</p>
+                            <button class="btn-primary" onclick="openPostModal(3)">Read Full Story</button>
+                        </div>
+                    </div>
+                    <div class="post-card animate-on-scroll">
+                        <div class="post-media">
+                            <img src="image/p4.1.jpg" alt="DCSC Talent Hunt Inauguration" class="post-img">
+                        </div>
+                        <div class="post-body">
+                            <div style="font-size:0.8rem; color:var(--cyan-glow); font-weight:700; margin-bottom:6px;">Talent Hunt</div>
+                            <h3 class="post-title">DCSC Talent Hunt Inauguration</h3>
+                            <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:16px;">The long awaited moment has finally arrived, the DCSC Talent Hunt has been officially inaugurated!</p>
+                            <button class="btn-primary" onclick="openPostModal(4)">Read Full Story</button>
+                        </div>
+                    </div>
+                    <div class="post-card animate-on-scroll">
+                        <div class="post-media">
+                            <img src="image/p5.jpg" alt="Eid-ul-Adha Mubarak" class="post-img">
+                        </div>
+                        <div class="post-body">
+                            <div style="font-size:0.8rem; color:var(--cyan-glow); font-weight:700; margin-bottom:6px;">Greetings</div>
+                            <h3 class="post-title">Eid-ul-Adha Mubarak</h3>
+                            <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:16px;">Eid-ul-Adha reminds us that true Qurbani is not measured by flesh or blood.</p>
+                            <button class="btn-primary" onclick="openPostModal(5)">Read Full Story</button>
+                        </div>
+                    </div>
+                    <div class="post-card animate-on-scroll">
+                        <div class="post-media">
+                            <img src="image/p6.jpg" alt="Condemnation of Cruelty" class="post-img">
+                        </div>
+                        <div class="post-body">
+                            <div style="font-size:0.8rem; color:var(--cyan-glow); font-weight:700; margin-bottom:6px;">Statement</div>
+                            <h3 class="post-title">Condemnation of Cruelty</h3>
+                            <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:16px;">Even as we claim to be superior as a nation, the harsh truth is proven by these images of cruelty.</p>
+                            <button class="btn-primary" onclick="openPostModal(6)">Read Full Story</button>
+                        </div>
+                    </div>
+                    <div class="post-card animate-on-scroll">
+                        <div class="post-media">
+                            <img src="image/p7.jpg" alt="New Sub-Executive Committee Welcome" class="post-img">
+                        </div>
+                        <div class="post-body">
+                            <div style="font-size:0.8rem; color:var(--cyan-glow); font-weight:700; margin-bottom:6px;">Announcement</div>
+                            <h3 class="post-title">New Sub-Executive Committee Welcome</h3>
+                            <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:16px;">It is a great moment for DCSC as we reveal our newly chosen Sub-Executive Committee members.</p>
+                            <button class="btn-primary" onclick="openPostModal(7)">Read Full Story</button>
+                        </div>
+                    </div>
+                    <div class="post-card animate-on-scroll">
+                        <div class="post-media">
+                            <img src="image/p8.jpg" alt="Wednesday Wonders: Ramadan Specials 2026" class="post-img">
+                        </div>
+                        <div class="post-body">
+                            <div style="font-size:0.8rem; color:var(--cyan-glow); font-weight:700; margin-bottom:6px;">Ramadan Specials</div>
+                            <h3 class="post-title">Wednesday Wonders: Ramadan Specials 2026</h3>
+                            <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:16px;">Wednesday Wonders Ramadan Specials 2026 successfully combined science with religion in perfect harmony.</p>
+                            <button class="btn-primary" onclick="openPostModal(8)">Read Full Story</button>
+                        </div>
+                    </div>
+                    <div class="post-card animate-on-scroll">
+                        <div class="post-media">
+                            <img src="image/p9.1.jpg" alt="Grand Iftar Mahfil" class="post-img">
+                        </div>
+                        <div class="post-body">
+                            <div style="font-size:0.8rem; color:var(--cyan-glow); font-weight:700; margin-bottom:6px;">Iftar Mahfil</div>
+                            <h3 class="post-title">Grand Iftar Mahfil</h3>
+                            <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:16px;">The DCSC family came together for a warm and memorable Iftar Mahfil on March 7, 2026.</p>
+                            <button class="btn-primary" onclick="openPostModal(9)">Read Full Story</button>
+                        </div>
+                    </div>
+                    <div class="post-card animate-on-scroll">
+                        <div class="post-media">
+                            <img src="image/p10.jpg" alt="Happy New Year 2026" class="post-img">
+                        </div>
+                        <div class="post-body">
+                            <div style="font-size:0.8rem; color:var(--cyan-glow); font-weight:700; margin-bottom:6px;">Greetings</div>
+                            <h3 class="post-title">Happy New Year 2026</h3>
+                            <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:16px;">2025, the previous year was of mixed emotions, bringing both happiness and lessons.</p>
+                            <button class="btn-primary" onclick="openPostModal(10)">Read Full Story</button>
+                        </div>
+                    </div>
+</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER WITH GOOD TIMES & FIXED LOGO -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="image/logo.png" alt="DCSC Logo" onerror="this.src='image/logo.svg'">
+                    <div class="brand-text">
+                        <span class="brand-line1">DHAKA COLLEGE</span>
+                        <span class="brand-line2">SCIENCE CLUB</span>
+                    </div>
+                </div>
+                <p>Spreading the knowledge of science to the utmost since 1996. #ForClubAndCountry<br><br><span style="font-size:0.85rem; color:var(--text-muted);">This is a demo website created by <a href="https://adi.pro.bd/" target="_blank" style="color:var(--cyan-glow); text-decoration:underline;">Abdullah Al Adib</a>, an Intermediate 1st year student at Dhaka College.</span></p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="scilab.html">Sci-Lab</a></li>
+                    <li><a href="join.html">Join Club</a></li>
+                    <li><a href="wall-magazine.html">Wall Magazine</a></li>
+                    <li><a href="posts.html">Posts & News</a></li>
+                    <li><a href="gallery.html">Photo Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Official Contact</h4>
+                <ul class="contact-info">
+                    <li><i class="fa-solid fa-location-dot"></i> Dhaka College, Dhaka-1205, Bangladesh</li>
+                    <li><i class="fa-solid fa-envelope"></i> official.dcsc@gmail.com</li>
+                    <li><i class="fa-brands fa-instagram"></i> @dcsc_official</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Dhaka College Science Club (DCSC). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <div class="modal-backdrop" id="post-modal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closePostModal()">&times;</button>
+            <div class="modal-body" id="modal-content-area"></div>
+        </div>
+    </div>
+
+    <script src="app.js?v=9"></script>
+</body>
+</html>

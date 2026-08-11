@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Dhaka College Science Club</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Orbitron:wght@600;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=9">
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <!-- SHARED BUG-FREE NAVBAR -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="logo-shield">
+                    <img src="image/logo.png" alt="DCSC Shield Logo" onerror="this.src='image/logo.svg'">
+                </div>
+                <div class="brand-text">
+                    <span class="brand-line1">DHAKA COLLEGE</span>
+                    <span class="brand-line2">SCIENCE CLUB</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link" data-en="Home" data-bn="মূল পাতা">Home</a>
+                <a href="events.html" class="nav-link" data-en="Events" data-bn="আয়োজন">Events</a>
+                <a href="achievements.html" class="nav-link" data-en="Achievements" data-bn="সাফল্য">Achievements</a>
+                <a href="committee.html" class="nav-link" data-en="Committee" data-bn="কমিটি">Committee</a>
+                <a href="scilab.html" class="nav-link" data-en="Sci-Lab" data-bn="গবেষণাগার">Sci-Lab</a>
+                
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link active">More <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="wall-magazine.html" class="dropdown-item"><i class="fa-solid fa-newspaper"></i> Wall Magazine</a>
+                        <a href="posts.html" class="dropdown-item"><i class="fa-solid fa-bullhorn"></i> Posts & News</a>
+                        <a href="gallery.html" class="dropdown-item"><i class="fa-solid fa-images"></i> Photo Gallery</a>
+                        <a href="about.html" class="dropdown-item active"><i class="fa-solid fa-circle-info"></i> Info & Contact</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="nav-controls">
+                <button class="icon-btn" id="theme-btn" title="Toggle Dark/Light Mode"><i class="fa-solid fa-moon"></i></button>
+                <button class="lang-btn" id="lang-btn"><span id="lang-indicator">EN</span></button>
+                <a href="join.html" class="btn-primary">
+                    <i class="fa-solid fa-user-plus"></i> <span data-en="Join Club" data-bn="ক্লাবে যোগ দিন">Join Club</span>
+                </a>
+                <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <h1 class="page-title" data-en="About Dhaka College Science Club" data-bn="ঢাকা কলেজ সায়েন্স ক্লাবের ইতিহাস ও পরিচিতি">About Dhaka College Science Club</h1>
+            <p class="page-subtitle">Legacy Since 1996 | #ForClubAndCountry</p>
+        </section>
+
+        <section class="section-padding">
+            <div class="section-container">
+                <div class="about-grid">
+                    <div class="about-card">
+                        <h3>Our History</h3>
+                        <p style="color:var(--text-secondary);">Dhaka College Science Club (DCSC) was established in 1996 at the historic Dhaka College campus (Estd. 1841). For nearly three decades, DCSC has been a beacon of scientific curiosity, nurturing thousands of students into renowned researchers, engineers, doctors, and olympiad champions.</p>
+                    </div>
+
+                    <div class="about-card">
+                        <h3>Our Mission & Motto</h3>
+                        <p style="color:var(--text-secondary);">Motto: <strong>#ForClubAndCountry</strong>. Our mission is "Spreading the knowledge of science to the utmost", promoting analytical thinking, scientific ethics, and nationwide competitiveness.</p>
+                    </div>
+                </div>
+
+                <div class="section-header" style="margin-top:60px;">
+                    <h2 class="section-title">Quiz Squads & Project Wings</h2>
+                    <div class="title-bar"></div>
+                </div>
+
+                <div class="wings-grid">
+                    <div class="wing-card">
+                        <div style="font-size:1.8rem; color:var(--cyan-glow); margin-bottom:8px;"><i class="fa-solid fa-bolt"></i></div>
+                        <h4>DC Ulka (উল্কা)</h4>
+                        <p style="font-size:0.85rem; color:var(--text-secondary);">Primary General Science & Quiz Squad.</p>
+                    </div>
+                    <div class="wing-card">
+                        <div style="font-size:1.8rem; color:var(--cyan-glow); margin-bottom:8px;"><i class="fa-solid fa-meteor"></i></div>
+                        <h4>DC Dhumketu (ধূমকেতু)</h4>
+                        <p style="font-size:0.85rem; color:var(--text-secondary);">Rapid-fire Buzzer & Championship Squad.</p>
+                    </div>
+                    <div class="wing-card">
+                        <div style="font-size:1.8rem; color:var(--cyan-glow); margin-bottom:8px;"><i class="fa-solid fa-atom"></i></div>
+                        <h4>Niharika (নীহারিকা)</h4>
+                        <p style="font-size:0.85rem; color:var(--text-secondary);">Physics & Astronomy Wing.</p>
+                    </div>
+                    <div class="wing-card">
+                        <div style="font-size:1.8rem; color:var(--cyan-glow); margin-bottom:8px;"><i class="fa-solid fa-vial"></i></div>
+                        <h4>Chayapath (ছায়াপথ)</h4>
+                        <p style="font-size:0.85rem; color:var(--text-secondary);">Chemistry & Bio Project Wing.</p>
+                    </div>
+                    <div class="wing-card">
+                        <div style="font-size:1.8rem; color:var(--cyan-glow); margin-bottom:8px;"><i class="fa-solid fa-user-astronaut"></i></div>
+                        <h4>Nakshatra (নক্ষত্র)</h4>
+                        <p style="font-size:0.85rem; color:var(--text-secondary);">Math & Innovation Wing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== IMPORTANT INFORMATION ===== -->
+        <section class="section-padding" style="background:linear-gradient(180deg,rgba(0,240,255,0.04) 0%,var(--bg-main) 100%);">
+            <div class="section-container">
+                <div class="section-header" style="text-align:center;margin-bottom:50px;">
+                    <span style="font-family:'Space Grotesk',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:3px;color:var(--cyan-glow);text-transform:uppercase;display:block;margin-bottom:10px;">NEED TO KNOW</span>
+                    <h2 style="font-family:'Orbitron',sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:#fff;margin:0;">Important Information</h2>
+                </div>
+
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-bottom:50px;">
+                    <!-- Membership Info -->
+                    <div style="background:var(--card-bg);border:1px solid rgba(0,240,255,0.15);border-radius:20px;padding:28px;">
+                        <div style="width:48px;height:48px;background:rgba(0,240,255,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+                            <i class="fa-solid fa-id-card" style="font-size:1.3rem;color:var(--cyan-glow);"></i>
+                        </div>
+                        <h4 style="font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:800;color:#fff;margin:0 0 10px;">Membership</h4>
+                        <ul style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;color:var(--text-secondary);line-height:1.9;padding-left:16px;margin:0;">
+                            <li>Open to all Dhaka College students</li>
+                            <li>Free membership — no registration fee</li>
+                            <li>Access to all events, workshops & olympiads</li>
+                            <li>Apply via the <a href="join.html" style="color:var(--cyan-glow);">Join Club</a> page</li>
+                        </ul>
+                    </div>
+                    <!-- Meeting Info -->
+                    <div style="background:var(--card-bg);border:1px solid rgba(255,215,0,0.15);border-radius:20px;padding:28px;">
+                        <div style="width:48px;height:48px;background:rgba(255,215,0,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+                            <i class="fa-solid fa-calendar-days" style="font-size:1.3rem;color:var(--gold-accent);"></i>
+                        </div>
+                        <h4 style="font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:800;color:#fff;margin:0 0 10px;">Meetings & Sessions</h4>
+                        <ul style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;color:var(--text-secondary);line-height:1.9;padding-left:16px;margin:0;">
+                            <li>Regular sessions held on campus</li>
+                            <li>Special study sessions before olympiads</li>
+                            <li>Quizzing & project workshops</li>
+                            <li>Follow Facebook for schedules</li>
+                        </ul>
+                    </div>
+                    <!-- Events Info -->
+                    <div style="background:var(--card-bg);border:1px solid rgba(16,185,129,0.15);border-radius:20px;padding:28px;">
+                        <div style="width:48px;height:48px;background:rgba(16,185,129,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+                            <i class="fa-solid fa-trophy" style="font-size:1.3rem;color:#10b981;"></i>
+                        </div>
+                        <h4 style="font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:800;color:#fff;margin:0 0 10px;">Events & Olympiads</h4>
+                        <ul style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;color:var(--text-secondary);line-height:1.9;padding-left:16px;margin:0;">
+                            <li>National Science Olympiad participation</li>
+                            <li>Intra Science Festival (annual)</li>
+                            <li>AI NeuroVerse, Olympiad Hunt</li>
+                            <li>Iftar Mahfil & cultural programs</li>
+                        </ul>
+                    </div>
+                    <!-- Certificate Info -->
+                    <div style="background:var(--card-bg);border:1px solid rgba(168,85,247,0.15);border-radius:20px;padding:28px;">
+                        <div style="width:48px;height:48px;background:rgba(168,85,247,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+                            <i class="fa-solid fa-certificate" style="font-size:1.3rem;color:#a855f7;"></i>
+                        </div>
+                        <h4 style="font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:800;color:#fff;margin:0 0 10px;">Certificates</h4>
+                        <ul style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;color:var(--text-secondary);line-height:1.9;padding-left:16px;margin:0;">
+                            <li>Participation & achievement certificates</li>
+                            <li>Generate & download instantly online</li>
+                            <li>Signed by club president & secretary</li>
+                            <li>Available at <a href="join.html#cert" style="color:#a855f7;">Join Club page</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ===== CONTACT SECTION ===== -->
+                <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start;">
+                    <div>
+                        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;margin:0 0 24px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-address-book" style="color:var(--cyan-glow);"></i> Contact &amp; Connect</h3>
+
+                        <div style="display:flex;flex-direction:column;gap:14px;">
+                            <a href="https://www.facebook.com/dcsc.dc" target="_blank" style="display:flex;align-items:center;gap:16px;background:rgba(24,119,242,0.08);border:1px solid rgba(24,119,242,0.25);border-radius:16px;padding:16px 20px;text-decoration:none;transition:all 0.3s;" onmouseover="this.style.background='rgba(24,119,242,0.18)'" onmouseout="this.style.background='rgba(24,119,242,0.08)'">
+                                <i class="fa-brands fa-facebook" style="font-size:1.6rem;color:#4267B2;flex-shrink:0;"></i>
+                                <div><strong style="font-family:'Space Grotesk',sans-serif;font-size:0.9rem;color:#fff;display:block;">Facebook Page</strong><span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.82rem;color:var(--text-secondary);">facebook.com/dcsc.dc</span></div>
+                                <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left:auto;color:var(--text-muted);font-size:0.8rem;"></i>
+                            </a>
+
+                            <a href="https://www.facebook.com/groups/dcscofficialgroup" target="_blank" style="display:flex;align-items:center;gap:16px;background:rgba(24,119,242,0.08);border:1px solid rgba(24,119,242,0.25);border-radius:16px;padding:16px 20px;text-decoration:none;transition:all 0.3s;" onmouseover="this.style.background='rgba(24,119,242,0.18)'" onmouseout="this.style.background='rgba(24,119,242,0.08)'">
+                                <i class="fa-brands fa-facebook-messenger" style="font-size:1.6rem;color:#0084ff;flex-shrink:0;"></i>
+                                <div><strong style="font-family:'Space Grotesk',sans-serif;font-size:0.9rem;color:#fff;display:block;">Facebook Group</strong><span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.82rem;color:var(--text-secondary);">Official Members Group</span></div>
+                                <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left:auto;color:var(--text-muted);font-size:0.8rem;"></i>
+                            </a>
+
+                            <a href="mailto:official.dcsc@gmail.com" style="display:flex;align-items:center;gap:16px;background:rgba(234,67,53,0.08);border:1px solid rgba(234,67,53,0.25);border-radius:16px;padding:16px 20px;text-decoration:none;transition:all 0.3s;" onmouseover="this.style.background='rgba(234,67,53,0.16)'" onmouseout="this.style.background='rgba(234,67,53,0.08)'">
+                                <i class="fa-solid fa-envelope" style="font-size:1.6rem;color:#ea4335;flex-shrink:0;"></i>
+                                <div><strong style="font-family:'Space Grotesk',sans-serif;font-size:0.9rem;color:#fff;display:block;">Email</strong><span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.82rem;color:var(--text-secondary);">official.dcsc@gmail.com</span></div>
+                                <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left:auto;color:var(--text-muted);font-size:0.8rem;"></i>
+                            </a>
+
+                            <div style="display:flex;align-items:center;gap:16px;background:rgba(0,240,255,0.06);border:1px solid rgba(0,240,255,0.15);border-radius:16px;padding:16px 20px;">
+                                <i class="fa-solid fa-location-dot" style="font-size:1.6rem;color:var(--cyan-glow);flex-shrink:0;"></i>
+                                <div><strong style="font-family:'Space Grotesk',sans-serif;font-size:0.9rem;color:#fff;display:block;">Location</strong><span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.82rem;color:var(--text-secondary);">Dhaka College, Mirpur Road, Dhaka-1205, Bangladesh</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Leadership Contact -->
+                        <h4 style="font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:800;color:#fff;margin:30px 0 16px;">Direct Contact — EC 2024–25</h4>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                            <div style="background:var(--card-bg);border:1px solid var(--border-color);border-radius:14px;padding:16px;">
+                                <strong style="font-family:'Space Grotesk',sans-serif;font-size:0.88rem;color:#fff;display:block;margin-bottom:4px;">Sadman Sadaf</strong>
+                                <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.75rem;color:var(--cyan-glow);display:block;margin-bottom:8px;">President</span>
+                                <a href="tel:+8801743389009" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.82rem;color:var(--text-secondary);text-decoration:none;display:flex;align-items:center;gap:6px;"><i class="fa-solid fa-phone" style="color:var(--cyan-glow);"></i>+880 1743-389009</a>
+                            </div>
+                            <div style="background:var(--card-bg);border:1px solid var(--border-color);border-radius:14px;padding:16px;">
+                                <strong style="font-family:'Space Grotesk',sans-serif;font-size:0.88rem;color:#fff;display:block;margin-bottom:4px;">Shahriar Samir</strong>
+                                <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.75rem;color:var(--gold-accent);display:block;margin-bottom:8px;">General Secretary</span>
+                                <a href="tel:+8801920248292" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.82rem;color:var(--text-secondary);text-decoration:none;display:flex;align-items:center;gap:6px;"><i class="fa-solid fa-phone" style="color:var(--gold-accent);"></i>+880 1920-248292</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Google Map -->
+                    <div>
+                        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;margin:0 0 24px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-map-location-dot" style="color:var(--gold-accent);"></i> Find Us</h3>
+                        <div style="border-radius:18px;overflow:hidden;border:1px solid rgba(255,215,0,0.2);box-shadow:0 10px 30px rgba(0,0,0,0.4);">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.7025386476587!2d90.38476!3d23.72827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b9045c1d1a99%3A0x9c32e2bcfe8c5a73!2sDhaka%20College!5e0!3m2!1sen!2sbd!4v1620000000000!5m2!1sen!2sbd" width="100%" height="300" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <!-- FAQ -->
+                        <h4 style="font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:800;color:#fff;margin:28px 0 14px;">Frequently Asked Questions</h4>
+                        <div style="display:flex;flex-direction:column;gap:10px;">
+                            <details style="background:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;padding:14px 18px;cursor:pointer;">
+                                <summary style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;font-weight:600;color:#fff;list-style:none;display:flex;justify-content:space-between;align-items:center;">Is membership free? <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;color:var(--text-muted);"></i></summary>
+                                <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.84rem;color:var(--text-secondary);margin:10px 0 0;line-height:1.7;">Yes! DCSC membership is completely free. Any student of Dhaka College can join by filling out the form on the Join Club page.</p>
+                            </details>
+                            <details style="background:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;padding:14px 18px;cursor:pointer;">
+                                <summary style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;font-weight:600;color:#fff;list-style:none;display:flex;justify-content:space-between;align-items:center;">How do I get a certificate? <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;color:var(--text-muted);"></i></summary>
+                                <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.84rem;color:var(--text-secondary);margin:10px 0 0;line-height:1.7;">Go to the <a href="join.html" style="color:var(--cyan-glow);">Join Club</a> page, scroll down to the Certificate section, fill in your details and click "Download Certificate".</p>
+                            </details>
+                            <details style="background:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;padding:14px 18px;cursor:pointer;">
+                                <summary style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;font-weight:600;color:#fff;list-style:none;display:flex;justify-content:space-between;align-items:center;">Who can participate in events? <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;color:var(--text-muted);"></i></summary>
+                                <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.84rem;color:var(--text-secondary);margin:10px 0 0;line-height:1.7;">Most events are open to Dhaka College Intermediate students. Some national competitions are open to all. Check each event for eligibility details.</p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER WITH GOOD TIMES & FIXED LOGO -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="image/logo.png" alt="DCSC Logo" onerror="this.src='image/logo.svg'">
+                    <div class="brand-text">
+                        <span class="brand-line1">DHAKA COLLEGE</span>
+                        <span class="brand-line2">SCIENCE CLUB</span>
+                    </div>
+                </div>
+                <p>Spreading the knowledge of science to the utmost since 1996. #ForClubAndCountry<br><br><span style="font-size:0.85rem; color:var(--text-muted);">This is a demo website created by <a href="https://adi.pro.bd/" target="_blank" style="color:var(--cyan-glow); text-decoration:underline;">Abdullah Al Adib</a>, an Intermediate 1st year student at Dhaka College.</span></p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="scilab.html">Sci-Lab</a></li>
+                    <li><a href="join.html">Join Club</a></li>
+                    <li><a href="wall-magazine.html">Wall Magazine</a></li>
+                    <li><a href="posts.html">Posts & News</a></li>
+                    <li><a href="gallery.html">Photo Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Official Contact</h4>
+                <ul class="contact-info">
+                    <li><i class="fa-solid fa-location-dot"></i> Dhaka College, Dhaka-1205, Bangladesh</li>
+                    <li><i class="fa-solid fa-envelope"></i> official.dcsc@gmail.com</li>
+                    <li><i class="fa-brands fa-instagram"></i> @dcsc_official</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Dhaka College Science Club (DCSC). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="app.js?v=9"></script>
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join DCSC & Certificate | Dhaka College Science Club</title>
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Orbitron:wght@600;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=9">
+    <!-- html2canvas for download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        /* ===== JOIN PAGE STYLES ===== */
+        .join-hero { text-align:center; padding: 80px 20px 50px; background: linear-gradient(135deg, rgba(0,240,255,0.06) 0%, rgba(255,215,0,0.04) 100%); }
+        .join-hero h1 { font-family:'Orbitron',sans-serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; background:linear-gradient(135deg,#fff,var(--cyan-glow)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:12px; }
+        .join-hero p { font-family:'Plus Jakarta Sans',sans-serif; color:var(--text-secondary); font-size:1.05rem; max-width:600px; margin:0 auto; }
+
+        .join-layout { display:grid; grid-template-columns:1fr 1fr; gap:40px; max-width:1200px; margin:0 auto; padding:60px 30px; }
+        @media(max-width:900px){ .join-layout { grid-template-columns:1fr; } }
+
+        /* Form */
+        .join-form-card { background:var(--card-bg); border:1px solid rgba(0,240,255,0.15); border-radius:24px; padding:40px; }
+        .join-form-card h2 { font-family:'Space Grotesk',sans-serif; font-size:1.4rem; font-weight:800; color:#fff; margin:0 0 8px; display:flex; align-items:center; gap:10px; }
+        .join-form-card > p { font-family:'Plus Jakarta Sans',sans-serif; color:var(--text-secondary); font-size:0.9rem; margin:0 0 28px; }
+        .fgrp { margin-bottom:18px; }
+        .fgrp label { display:block; font-family:'Plus Jakarta Sans',sans-serif; font-size:0.83rem; font-weight:600; color:var(--text-secondary); margin-bottom:7px; letter-spacing:0.5px; }
+        .fgrp input, .fgrp select, .fgrp textarea {
+            width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);
+            border-radius:12px; padding:12px 16px; color:#fff; font-family:'Plus Jakarta Sans',sans-serif;
+            font-size:0.92rem; outline:none; transition:border 0.25s, box-shadow 0.25s; box-sizing:border-box;
+        }
+        .fgrp input:focus, .fgrp select:focus, .fgrp textarea:focus {
+            border-color:var(--cyan-glow); box-shadow:0 0 0 3px rgba(0,240,255,0.12);
+        }
+        .fgrp textarea { resize:vertical; min-height:80px; }
+        .frow { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+        .submit-btn { width:100%; padding:15px; background:linear-gradient(135deg,var(--cyan-glow),#4facfe); color:#000; font-family:'Space Grotesk',sans-serif; font-weight:800; font-size:1rem; border:none; border-radius:14px; cursor:pointer; transition:all 0.3s; letter-spacing:0.5px; margin-top:8px; }
+        .submit-btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,240,255,0.3); }
+
+        /* ID Card Preview */
+        .preview-side { display:flex; flex-direction:column; gap:24px; }
+        .id-card-wrap { position:relative; }
+        .id-card {
+            width:100%; max-width:400px; margin:0 auto;
+            background: linear-gradient(135deg, #0a0a1a 0%, #0f1e2e 60%, #0a1510 100%);
+            border:2px solid rgba(0,240,255,0.3); border-radius:20px; overflow:hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 40px rgba(0,240,255,0.1);
+            font-family:'Plus Jakarta Sans',sans-serif; position:relative;
+        }
+        .id-card-top { background:linear-gradient(135deg,rgba(0,240,255,0.15),rgba(255,215,0,0.08)); padding:20px; display:flex; align-items:center; gap:14px; border-bottom:1px solid rgba(0,240,255,0.15); }
+        .id-card-logo { width:44px; height:44px; flex-shrink:0; }
+        .id-card-org h4 { font-family:'Orbitron',sans-serif; font-size:0.55rem; font-weight:800; letter-spacing:2px; color:#fff; margin:0; text-transform:uppercase; }
+        .id-card-org p { font-family:'Orbitron',sans-serif; font-size:0.48rem; font-weight:700; letter-spacing:2px; color:var(--cyan-glow); margin:2px 0 0; text-transform:uppercase; }
+        .id-card-body { padding:20px; display:grid; grid-template-columns:80px 1fr; gap:16px; align-items:start; }
+        .id-photo-box { width:80px; height:96px; border-radius:10px; background:rgba(255,255,255,0.06); border:2px solid rgba(0,240,255,0.3); overflow:hidden; display:flex; align-items:center; justify-content:center; }
+        .id-photo-box img { width:100%; height:100%; object-fit:cover; }
+        .id-photo-box i { font-size:2rem; color:rgba(0,240,255,0.4); }
+        .id-info h3 { font-family:'Space Grotesk',sans-serif; font-size:1rem; font-weight:800; color:#fff; margin:0 0 8px; }
+        .id-badge { display:inline-block; font-size:0.65rem; font-weight:700; letter-spacing:1px; background:rgba(0,240,255,0.15); color:var(--cyan-glow); border:1px solid rgba(0,240,255,0.3); padding:2px 10px; border-radius:20px; margin-bottom:10px; text-transform:uppercase; }
+        .id-row { display:flex; gap:6px; align-items:center; margin-bottom:5px; }
+        .id-row span.lbl { font-size:0.68rem; color:var(--text-muted); font-weight:600; width:60px; flex-shrink:0; }
+        .id-row span.val { font-size:0.75rem; color:rgba(255,255,255,0.85); font-weight:600; }
+        .id-card-footer { padding:12px 20px; background:rgba(0,0,0,0.3); border-top:1px solid rgba(0,240,255,0.1); display:flex; justify-content:space-between; align-items:center; }
+        .id-card-footer span { font-size:0.65rem; color:var(--text-muted); font-family:'Space Grotesk',sans-serif; letter-spacing:1px; }
+        .id-card-footer .id-num { font-family:'Orbitron',sans-serif; font-size:0.72rem; color:var(--gold-accent); font-weight:700; }
+        .download-btn { width:100%; max-width:400px; margin:0 auto; padding:14px; background:rgba(255,215,0,0.1); border:1px solid rgba(255,215,0,0.35); border-radius:14px; color:var(--gold-accent); font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:0.9rem; cursor:pointer; transition:all 0.3s; display:flex; align-items:center; justify-content:center; gap:8px; }
+        .download-btn:hover { background:rgba(255,215,0,0.2); transform:translateY(-1px); }
+
+        /* ===== CERTIFICATE ===== */
+        .cert-section { max-width:1200px; margin:0 auto; padding:20px 30px 80px; }
+        .cert-section-head { text-align:center; margin-bottom:50px; }
+        .cert-section-head h2 { font-family:'Orbitron',sans-serif; font-size:clamp(1.5rem,3vw,2.2rem); font-weight:900; color:#fff; margin-bottom:8px; }
+        .cert-section-head p { font-family:'Plus Jakarta Sans',sans-serif; color:var(--text-secondary); }
+
+        .cert-layout { display:grid; grid-template-columns:1fr 1.6fr; gap:40px; align-items:start; }
+        @media(max-width:900px){ .cert-layout { grid-template-columns:1fr; } }
+
+        .cert-form-box { background:var(--card-bg); border:1px solid rgba(255,215,0,0.2); border-radius:22px; padding:36px; }
+        .cert-form-box h3 { font-family:'Space Grotesk',sans-serif; font-size:1.15rem; font-weight:800; color:#fff; margin:0 0 20px; display:flex; align-items:center; gap:9px; }
+
+        /* Certificate Design */
+        #cert-canvas-wrap { position:relative; }
+        #cert-preview {
+            width:100%; background:#0a0c14;
+            border:2px solid rgba(255,215,0,0.4); border-radius:16px; overflow:hidden;
+            box-shadow:0 20px 60px rgba(0,0,0,0.8), 0 0 50px rgba(255,215,0,0.08);
+            font-family:'Plus Jakarta Sans',sans-serif; position:relative;
+        }
+        .cert-border { padding:4px; background:linear-gradient(135deg, rgba(255,215,0,0.5), rgba(0,240,255,0.3), rgba(255,215,0,0.5)); border-radius:16px; }
+        .cert-inner { background:linear-gradient(160deg, #080b18 0%, #0d1220 50%, #070c10 100%); border-radius:13px; padding:40px 50px; position:relative; overflow:hidden; }
+        .cert-inner::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); pointer-events:none; }
+        .cert-top { display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:28px; padding-bottom:20px; border-bottom:1px solid rgba(255,215,0,0.2); }
+        .cert-top img { width:52px; height:52px; object-fit:contain; filter:drop-shadow(0 0 8px rgba(255,215,0,0.4)); }
+        .cert-top-text h4 { font-family:'Orbitron',sans-serif; font-size:0.62rem; font-weight:800; letter-spacing:2.5px; color:#fff; margin:0; text-transform:uppercase; }
+        .cert-top-text p { font-family:'Orbitron',sans-serif; font-size:0.52rem; letter-spacing:2px; color:var(--gold-accent); margin:3px 0 0; text-transform:uppercase; }
+        .cert-title { text-align:center; margin-bottom:22px; }
+        .cert-title h3 { font-family:'Orbitron',sans-serif; font-size:clamp(0.7rem,2vw,1rem); font-weight:900; letter-spacing:4px; color:var(--gold-accent); text-transform:uppercase; margin:0 0 6px; }
+        .cert-title p { font-family:'Plus Jakarta Sans',sans-serif; font-size:0.75rem; color:var(--text-secondary); margin:0; }
+        .cert-name { text-align:center; font-family:'Space Grotesk',sans-serif; font-size:clamp(1.2rem,3vw,1.8rem); font-weight:900; color:#fff; margin:16px 0 8px; text-shadow:0 0 20px rgba(255,215,0,0.3); }
+        .cert-desc { text-align:center; font-family:'Plus Jakarta Sans',sans-serif; font-size:0.82rem; color:rgba(255,255,255,0.7); line-height:1.7; margin-bottom:24px; max-width:420px; margin-left:auto; margin-right:auto; }
+        .cert-meta { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:24px; }
+        .cert-meta-item { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:10px; padding:10px 14px; }
+        .cert-meta-item span { display:block; font-size:0.62rem; color:var(--text-muted); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:3px; }
+        .cert-meta-item strong { font-size:0.8rem; color:#fff; font-family:'Space Grotesk',sans-serif; }
+        .cert-sig-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; padding-top:20px; border-top:1px solid rgba(255,215,0,0.15); }
+        .cert-sig { text-align:center; }
+        .cert-sig-line { height:1px; background:rgba(255,255,255,0.2); margin-bottom:6px; }
+        .cert-sig span { font-size:0.68rem; color:var(--text-muted); font-family:'Space Grotesk',sans-serif; letter-spacing:0.5px; }
+        .cert-sig strong { display:block; font-size:0.78rem; color:rgba(255,255,255,0.85); margin-bottom:2px; }
+        .cert-stamp { position:absolute; bottom:40px; right:50px; width:70px; height:70px; border-radius:50%; border:2px solid rgba(0,240,255,0.4); display:flex; align-items:center; justify-content:center; opacity:0.35; }
+        .cert-stamp i { font-size:1.8rem; color:var(--cyan-glow); }
+        .cert-id-badge { display:inline-block; margin:0 auto 16px; padding:4px 16px; background:rgba(255,215,0,0.1); border:1px solid rgba(255,215,0,0.3); border-radius:30px; font-size:0.68rem; color:var(--gold-accent); font-family:'Orbitron',sans-serif; letter-spacing:1px; }
+        .cert-download-btn { width:100%; padding:16px; background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,165,0,0.1)); border:1px solid rgba(255,215,0,0.4); border-radius:14px; color:var(--gold-accent); font-family:'Space Grotesk',sans-serif; font-weight:800; font-size:1rem; cursor:pointer; transition:all 0.3s; display:flex; align-items:center; justify-content:center; gap:10px; margin-top:20px; }
+        .cert-download-btn:hover { background:linear-gradient(135deg,rgba(255,215,0,0.25),rgba(255,165,0,0.18)); box-shadow:0 8px 24px rgba(255,215,0,0.2); transform:translateY(-2px); }
+    </style>
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="logo-shield"><img src="image/logo.png" alt="DCSC Logo" onerror="this.src='image/logo.svg'"></div>
+                <div class="brand-text">
+                    <span class="brand-line1">DHAKA COLLEGE</span>
+                    <span class="brand-line2">SCIENCE CLUB</span>
+                </div>
+            </a>
+            <nav class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="achievements.html" class="nav-link">Achievements</a>
+                <a href="committee.html" class="nav-link">Committee</a>
+                <a href="scilab.html" class="nav-link">Sci-Lab</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">More <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="wall-magazine.html" class="dropdown-item"><i class="fa-solid fa-newspaper"></i> Wall Magazine</a>
+                        <a href="posts.html" class="dropdown-item"><i class="fa-solid fa-bullhorn"></i> Posts &amp; News</a>
+                        <a href="gallery.html" class="dropdown-item"><i class="fa-solid fa-images"></i> Photo Gallery</a>
+                        <a href="about.html" class="dropdown-item"><i class="fa-solid fa-circle-info"></i> Info &amp; Contact</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="nav-controls">
+                <button class="icon-btn" id="theme-btn"><i class="fa-solid fa-moon"></i></button>
+                <a href="join.html" class="btn-primary active"><i class="fa-solid fa-user-plus"></i> Join Club</a>
+                <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <div class="join-hero">
+            <span style="font-family:'Space Grotesk',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:3px;color:var(--cyan-glow);text-transform:uppercase;display:block;margin-bottom:10px;">MEMBERSHIP PORTAL</span>
+            <h1>Join Dhaka College<br>Science Club</h1>
+            <p>Fill in your details below to generate your provisional member ID card. Download &amp; show it at events!</p>
+        </div>
+
+        <!-- JOIN FORM + ID CARD -->
+        <div class="join-layout">
+            <!-- Form -->
+            <div class="join-form-card">
+                <h2><i class="fa-solid fa-id-card" style="color:var(--cyan-glow);"></i> Membership Application</h2>
+                <p>Fill in your information — your ID card previews live on the right!</p>
+
+                <div class="fgrp">
+                    <label>Full Name *</label>
+                    <input type="text" id="jn-name" placeholder="e.g. Tanvir Ahmed" oninput="updateCard()">
+                </div>
+                <div class="frow">
+                    <div class="fgrp">
+                        <label>Batch / Class *</label>
+                        <input type="text" id="jn-batch" placeholder="HSC 2026" oninput="updateCard()">
+                    </div>
+                    <div class="fgrp">
+                        <label>College Roll No *</label>
+                        <input type="text" id="jn-roll" placeholder="120435" oninput="updateCard()">
+                    </div>
+                </div>
+                <div class="fgrp">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="jn-phone" placeholder="017xxxxxxxx">
+                </div>
+                <div class="fgrp">
+                    <label>Field of Interest</label>
+                    <select id="jn-interest" onchange="updateCard()">
+                        <option value="Physics &amp; Astronomy">Physics &amp; Astronomy</option>
+                        <option value="Chemistry &amp; Biology">Chemistry &amp; Biology</option>
+                        <option value="Robotics &amp; IT">Robotics &amp; IT</option>
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="Environmental Science">Environmental Science</option>
+                        <option value="Science Olympiad">Science Olympiad</option>
+                    </select>
+                </div>
+                <div class="fgrp">
+                    <label>Upload Photo</label>
+                    <input type="file" id="jn-photo" accept="image/*" onchange="loadPhoto(event)">
+                </div>
+                <div class="fgrp">
+                    <label>Why do you want to join DCSC?</label>
+                    <textarea id="jn-reason" placeholder="Write briefly..." rows="3"></textarea>
+                </div>
+                <button class="submit-btn" onclick="submitApp()">
+                    <i class="fa-solid fa-paper-plane"></i> Submit Application
+                </button>
+                <div id="join-success" style="display:none;margin-top:16px;padding:14px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:12px;color:#10b981;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;text-align:center;">
+                    ✅ Application submitted! Download your provisional ID card →
+                </div>
+            </div>
+
+            <!-- Live ID Card Preview -->
+            <div class="preview-side">
+                <div style="font-family:'Space Grotesk',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:1px;color:var(--text-muted);text-transform:uppercase;margin-bottom:4px;">Live Preview</div>
+                <div class="id-card" id="member-id-card">
+                    <div class="id-card-top">
+                        <img src="image/logo.png" class="id-card-logo" onerror="this.style.display='none'">
+                        <div class="id-card-org">
+                            <h4>Dhaka College</h4>
+                            <p>Science Club</p>
+                        </div>
+                        <div style="margin-left:auto;font-family:'Orbitron',sans-serif;font-size:0.55rem;color:var(--text-muted);letter-spacing:1px;">MEMBER ID</div>
+                    </div>
+                    <div class="id-card-body">
+                        <div>
+                            <div class="id-photo-box" id="id-photo-wrap">
+                                <i class="fa-solid fa-user" id="id-photo-icon"></i>
+                                <img id="id-photo-img" src="" alt="" style="display:none;width:100%;height:100%;object-fit:cover;">
+                            </div>
+                        </div>
+                        <div class="id-info">
+                            <div class="id-badge">Provisional Member</div>
+                            <h3 id="id-name">Your Name</h3>
+                            <div class="id-row"><span class="lbl">Batch</span><span class="val" id="id-batch">—</span></div>
+                            <div class="id-row"><span class="lbl">Roll</span><span class="val" id="id-roll">—</span></div>
+                            <div class="id-row"><span class="lbl">Interest</span><span class="val" id="id-interest">—</span></div>
+                        </div>
+                    </div>
+                    <div class="id-card-footer">
+                        <span>Est. 1996 &bull; #ForClubAndCountry</span>
+                        <span class="id-num" id="id-num">DCSC-0000</span>
+                    </div>
+                </div>
+                <button class="download-btn" onclick="downloadIDCard()">
+                    <i class="fa-solid fa-download"></i> Download ID Card
+                </button>
+                <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.78rem;color:var(--text-muted);text-align:center;max-width:400px;margin:0 auto;">
+                    This is a provisional/demo ID card. Official ID cards are issued after verification by the club committee.
+                </p>
+            </div>
+        </div>
+
+        <!-- CERTIFICATE SECTION -->
+        <div style="border-top:1px solid rgba(255,255,255,0.06);"></div>
+        <div class="cert-section">
+            <div class="cert-section-head">
+                <span style="font-family:'Space Grotesk',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:3px;color:var(--gold-accent);text-transform:uppercase;display:block;margin-bottom:10px;">RECOGNITION</span>
+                <h2>Generate Your Certificate</h2>
+                <p>Participation &amp; achievement certificates for DCSC events — download as image instantly.</p>
+            </div>
+
+            <div class="cert-layout">
+                <!-- Cert Form -->
+                <div class="cert-form-box">
+                    <h3><i class="fa-solid fa-certificate" style="color:var(--gold-accent);"></i> Certificate Details</h3>
+                    <div class="fgrp">
+                        <label>Recipient Name *</label>
+                        <input type="text" id="cert-name" placeholder="Full name" oninput="updateCert()">
+                    </div>
+                    <div class="fgrp">
+                        <label>Certificate Type</label>
+                        <select id="cert-type" onchange="updateCert()">
+                            <option value="Participation">Participation Certificate</option>
+                            <option value="Achievement">Achievement Certificate</option>
+                            <option value="Appreciation">Appreciation Certificate</option>
+                            <option value="Excellence">Certificate of Excellence</option>
+                            <option value="Membership">Membership Certificate</option>
+                        </select>
+                    </div>
+                    <div class="fgrp">
+                        <label>Event / Occasion *</label>
+                        <input type="text" id="cert-event" placeholder="e.g. Olympiad Hunt 4.0" oninput="updateCert()">
+                    </div>
+                    <div class="frow">
+                        <div class="fgrp">
+                            <label>Date</label>
+                            <input type="date" id="cert-date" oninput="updateCert()">
+                        </div>
+                        <div class="fgrp">
+                            <label>Position / Result</label>
+                            <input type="text" id="cert-position" placeholder="e.g. 1st Place" oninput="updateCert()">
+                        </div>
+                    </div>
+                    <div class="fgrp">
+                        <label>Signed By</label>
+                        <input type="text" id="cert-signer" placeholder="e.g. Sadman Sadaf — President" oninput="updateCert()" value="Sadman Sadaf — President, EC 2024–25">
+                    </div>
+                    <div class="fgrp">
+                        <label>Countersigned By</label>
+                        <input type="text" id="cert-signer2" placeholder="e.g. Shahriar Samir — Gen. Secretary" oninput="updateCert()" value="Shahriar Samir — General Secretary, EC 2024–25">
+                    </div>
+                    <button class="cert-download-btn" onclick="downloadCert()">
+                        <i class="fa-solid fa-file-arrow-down"></i> Download Certificate
+                    </button>
+                </div>
+
+                <!-- Certificate Preview -->
+                <div id="cert-canvas-wrap">
+                    <div class="cert-border">
+                        <div class="cert-inner" id="cert-preview">
+                            <div class="cert-top">
+                                <img src="image/logo.png" onerror="this.style.display='none'" alt="DCSC Logo">
+                                <div class="cert-top-text">
+                                    <h4>Dhaka College Science Club</h4>
+                                    <p>Est. 1996 &bull; #ForClubAndCountry</p>
+                                </div>
+                            </div>
+                            <div class="cert-title">
+                                <h3 id="cert-type-display">Certificate of Participation</h3>
+                                <p>This is to proudly certify that</p>
+                            </div>
+                            <div class="cert-name" id="cert-name-display">Recipient Name</div>
+                            <div class="cert-desc" id="cert-desc-display">
+                                has successfully participated in the event organized by Dhaka College Science Club.
+                            </div>
+                            <div style="text-align:center;">
+                                <span class="cert-id-badge" id="cert-id-badge">DCSC-CERT-0000</span>
+                            </div>
+                            <div class="cert-meta">
+                                <div class="cert-meta-item">
+                                    <span>Event</span>
+                                    <strong id="cert-event-display">—</strong>
+                                </div>
+                                <div class="cert-meta-item">
+                                    <span>Date</span>
+                                    <strong id="cert-date-display">—</strong>
+                                </div>
+                            </div>
+                            <div class="cert-sig-row">
+                                <div class="cert-sig">
+                                    <div class="cert-sig-line"></div>
+                                    <strong id="cert-sig1">Sadman Sadaf — President, EC 2024–25</strong>
+                                    <span>Authorized Signatory</span>
+                                </div>
+                                <div class="cert-sig">
+                                    <div class="cert-sig-line"></div>
+                                    <strong id="cert-sig2">Shahriar Samir — General Secretary, EC 2024–25</strong>
+                                    <span>Authorized Signatory</span>
+                                </div>
+                            </div>
+                            <div class="cert-stamp"><i class="fa-solid fa-check-double"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container" style="padding:40px 40px 30px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;">
+            <div>
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+                    <img src="image/logo.png" alt="DCSC Logo" style="width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,240,255,0.35));" onerror="this.src='image/logo.svg'">
+                    <div>
+                        <span style="display:block;font-family:'Orbitron',sans-serif;font-size:0.65rem;font-weight:800;letter-spacing:2.5px;color:#fff;">DHAKA COLLEGE</span>
+                        <span style="display:block;font-family:'Orbitron',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:2px;color:var(--cyan-glow);">SCIENCE CLUB</span>
+                    </div>
+                </div>
+                <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;line-height:1.75;color:var(--text-secondary);margin:0 0 6px;">Spreading the knowledge of science since 1996. <span style="color:var(--gold-accent);font-weight:600;">#ForClubAndCountry</span></p>
+            </div>
+            <div>
+                <h4 style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--cyan-glow);margin-bottom:16px;">Quick Links</h4>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;">
+                    <li><a href="index.html" style="color:var(--text-secondary);text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;">Home</a></li>
+                    <li><a href="events.html" style="color:var(--text-secondary);text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;">Events</a></li>
+                    <li><a href="achievements.html" style="color:var(--text-secondary);text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;">Achievements</a></li>
+                    <li><a href="gallery.html" style="color:var(--text-secondary);text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;">Photo Gallery</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--cyan-glow);margin-bottom:16px;">Contact</h4>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;">
+                    <li style="display:flex;align-items:flex-start;gap:9px;color:var(--text-secondary);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;"><i class="fa-solid fa-location-dot" style="color:var(--cyan-glow);margin-top:3px;flex-shrink:0;"></i>Dhaka College, Dhaka-1205</li>
+                    <li style="display:flex;align-items:center;gap:9px;color:var(--text-secondary);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;"><i class="fa-solid fa-envelope" style="color:var(--cyan-glow);"></i>official.dcsc@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom" style="text-align:center;padding:14px 40px;border-top:1px solid rgba(0,240,255,0.08);">
+            <p style="font-family:'Space Grotesk',sans-serif;font-size:0.8rem;color:var(--text-muted);">&copy; 2026 Dhaka College Science Club. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="app.js?v=9"></script>
+    <script>
+    // ===== ID CARD =====
+    let memberNum = 'DCSC-' + String(Math.floor(1000 + Math.random()*9000));
+    document.getElementById('id-num').textContent = memberNum;
+
+    function updateCard(){
+        const name = document.getElementById('jn-name').value || 'Your Name';
+        const batch = document.getElementById('jn-batch').value || '—';
+        const roll = document.getElementById('jn-roll').value || '—';
+        const interest = document.getElementById('jn-interest').value;
+        document.getElementById('id-name').textContent = name;
+        document.getElementById('id-batch').textContent = batch;
+        document.getElementById('id-roll').textContent = roll;
+        document.getElementById('id-interest').textContent = interest;
+    }
+
+    function loadPhoto(e){
+        const file = e.target.files[0];
+        if(!file) return;
+        const reader = new FileReader();
+        reader.onload = function(ev){
+            document.getElementById('id-photo-icon').style.display='none';
+            const img = document.getElementById('id-photo-img');
+            img.src = ev.target.result;
+            img.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function downloadIDCard(){
+        const card = document.getElementById('member-id-card');
+        html2canvas(card, {scale:3, backgroundColor:null, useCORS:true}).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'DCSC-Member-ID.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+    }
+
+    function submitApp(){
+        const name = document.getElementById('jn-name').value;
+        if(!name){ alert('Please enter your name!'); return; }
+        document.getElementById('join-success').style.display='block';
+    }
+
+    // ===== CERTIFICATE =====
+    let certNum = 'DCSC-CERT-' + String(Math.floor(1000+Math.random()*9000));
+    document.getElementById('cert-id-badge').textContent = certNum;
+
+    // Set today's date default
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('cert-date').value = today;
+    updateCert();
+
+    function updateCert(){
+        const name = document.getElementById('cert-name').value || 'Recipient Name';
+        const type = document.getElementById('cert-type').value;
+        const event = document.getElementById('cert-event').value || '—';
+        const date = document.getElementById('cert-date').value;
+        const position = document.getElementById('cert-position').value;
+        const signer = document.getElementById('cert-signer').value;
+        const signer2 = document.getElementById('cert-signer2').value;
+
+        document.getElementById('cert-name-display').textContent = name;
+        document.getElementById('cert-type-display').textContent = 'Certificate of ' + type;
+        document.getElementById('cert-event-display').textContent = event;
+
+        let dateStr = '—';
+        if(date){ const d=new Date(date); dateStr=d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}); }
+        document.getElementById('cert-date-display').textContent = dateStr;
+
+        // Build description
+        let desc = `has successfully `;
+        if(type==='Participation') desc += `participated in <strong>${event}</strong>, organized by Dhaka College Science Club.`;
+        else if(type==='Achievement') desc += `achieved outstanding performance in <strong>${event}</strong>, organized by Dhaka College Science Club.`;
+        else if(type==='Appreciation') desc += `received this appreciation for valuable contribution to <strong>${event}</strong>.`;
+        else if(type==='Excellence') desc += `demonstrated exceptional excellence in <strong>${event}</strong>, organized by Dhaka College Science Club.`;
+        else if(type==='Membership') desc += `been officially enrolled as a Member of Dhaka College Science Club — ${event}.`;
+        if(position) desc += ` Position/Result: <strong>${position}</strong>.`;
+        document.getElementById('cert-desc-display').innerHTML = desc;
+
+        if(signer) document.getElementById('cert-sig1').textContent = signer;
+        if(signer2) document.getElementById('cert-sig2').textContent = signer2;
+    }
+
+    function downloadCert(){
+        const wrap = document.getElementById('cert-canvas-wrap');
+        html2canvas(wrap, {scale:3, backgroundColor:'#080b18', useCORS:true}).then(canvas => {
+            const link = document.createElement('a');
+            const name = document.getElementById('cert-name').value || 'Certificate';
+            link.download = 'DCSC-Certificate-' + name.replace(/\s+/g,'-') + '.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+    }
+    </script>
+</body>
+</html>

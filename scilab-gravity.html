@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Gravity & Planet Sandbox | DCSC Sci-Lab</title>
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Orbitron:wght@700;800;900&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=9">
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="logo-shield">
+                    <img src="image/logo.png" alt="DCSC Shield Logo" onerror="this.src='image/logo.svg'">
+                </div>
+                <div class="brand-text">
+                    <span class="brand-line1">DHAKA COLLEGE</span>
+                    <span class="brand-line2">SCIENCE CLUB</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="achievements.html" class="nav-link">Achievements</a>
+                <a href="committee.html" class="nav-link">Committee</a>
+                <a href="scilab.html" class="nav-link active">Sci-Lab</a>
+                
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">More <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="wall-magazine.html" class="dropdown-item"><i class="fa-solid fa-newspaper"></i> Wall Magazine</a>
+                        <a href="posts.html" class="dropdown-item"><i class="fa-solid fa-bullhorn"></i> Posts & News</a>
+                        <a href="gallery.html" class="dropdown-item"><i class="fa-solid fa-images"></i> Photo Gallery</a>
+                        <a href="about.html" class="dropdown-item"><i class="fa-solid fa-circle-info"></i> Info & Contact</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="nav-controls">
+                <button class="icon-btn" id="theme-btn" title="Toggle Dark/Light Mode"><i class="fa-solid fa-moon"></i></button>
+                <a href="join.html" class="btn-primary"><i class="fa-solid fa-user-plus"></i> Join Club</a>
+                <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <h1 class="page-title"><i class="fa-solid fa-shuttle-space"></i> Physics Gravity & Planet Sandbox</h1>
+            <p class="page-subtitle">Orbital Astrophysics & Keplerian Mechanics Simulator</p>
+        </section>
+
+        <section class="section-padding">
+            <div class="section-container">
+                <a href="scilab.html" class="btn-secondary" style="margin-bottom:24px;"><i class="fa-solid fa-arrow-left"></i> Back to Sci-Lab Hub</a>
+
+                <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:20px; padding:32px; text-align:center;">
+                    <h3 style="font-family:var(--font-heading); margin-bottom:12px;"><i class="fa-solid fa-globe"></i> Click Anywhere to Launch New Planets!</h3>
+                    <p style="color:var(--text-secondary); margin-bottom:20px;">Watch gravitational forces pull orbiting bodies around the central star in real time.</p>
+                    <canvas id="orbit-canvas" style="border-radius:16px; background:#080C14; border:1px solid var(--cyan-glow); width:100%; max-width:900px; height:420px; cursor:crosshair; box-shadow:0 0 30px rgba(0,242,254,0.3);"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="image/logo.png" alt="DCSC Logo" onerror="this.src='image/logo.svg'">
+                    <div class="brand-text">
+                        <span class="brand-line1">DHAKA COLLEGE</span>
+                        <span class="brand-line2">SCIENCE CLUB</span>
+                    </div>
+                </div>
+                <p>Spreading the knowledge of science to the utmost since 1996. #ForClubAndCountry<br><br><span style="font-size:0.85rem; color:var(--text-muted);">This is a demo website created by <a href="https://adi.pro.bd/" target="_blank" style="color:var(--cyan-glow); text-decoration:underline;">Abdullah Al Adib</a>, an Intermediate 1st year student at Dhaka College.</span></p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="scilab.html">Sci-Lab</a></li>
+                    <li><a href="join.html">Join Club</a></li>
+                    <li><a href="wall-magazine.html">Wall Magazine</a></li>
+                    <li><a href="posts.html">Posts & News</a></li>
+                    <li><a href="gallery.html">Photo Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Official Contact</h4>
+                <ul class="contact-info">
+                    <li><i class="fa-solid fa-location-dot"></i> Dhaka College, Dhaka-1205, Bangladesh</li>
+                    <li><i class="fa-solid fa-envelope"></i> official.dcsc@gmail.com</li>
+                    <li><i class="fa-brands fa-instagram"></i> @dcsc_official</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Dhaka College Science Club (DCSC). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="app.js?v=9"></script>
+</body>
+</html>
