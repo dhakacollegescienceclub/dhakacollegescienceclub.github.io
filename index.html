@@ -18,30 +18,28 @@
     <div class="cursor-glow" id="cursor-glow"></div>
 
     <style>
-        /* Enhanced Navbar */
-        .navbar { background: rgba(8,8,20,0.92) !important; backdrop-filter: blur(20px) !important; border-bottom: 1px solid rgba(0,240,255,0.15) !important; }
-        .brand-line1 { font-family: 'Orbitron', sans-serif !important; font-size: 0.65rem !important; font-weight: 800 !important; letter-spacing: 2px !important; color: #fff !important; }
-        .brand-line2 { font-family: 'Orbitron', sans-serif !important; font-size: 0.62rem !important; font-weight: 700 !important; letter-spacing: 2px !important; color: var(--cyan-glow) !important; }
-        
+        /* Enhanced Navbar — uses var() so light mode works */
+        .navbar { backdrop-filter: blur(20px) !important; }
+        .brand-line1 { font-family: 'Orbitron', sans-serif !important; font-size: 0.65rem !important; font-weight: 800 !important; letter-spacing: 2px !important; }
+        .brand-line2 { font-family: 'Orbitron', sans-serif !important; font-size: 0.62rem !important; font-weight: 700 !important; letter-spacing: 2px !important; }
         .nav-link.active { color: var(--cyan-glow) !important; }
-        /* Fix btn-outline */
-        .btn-outline { display:inline-flex !important; align-items:center !important; gap:8px !important; padding:12px 28px !important; border:2px solid rgba(255,255,255,0.4) !important; border-radius:50px !important; color:#fff !important; font-family:'Plus Jakarta Sans',sans-serif !important; font-weight:700 !important; font-size:1rem !important; text-decoration:none !important; transition:all 0.3s !important; background:rgba(255,255,255,0.05) !important; cursor:pointer !important; }
-        .btn-outline:hover { border-color:var(--cyan-glow) !important; color:var(--cyan-glow) !important; background:rgba(0,240,255,0.1) !important; }
-        /* Footer redesign */
-        .footer { background: linear-gradient(180deg, #06060f 0%, #0a0a18 100%) !important; border-top: 2px solid transparent !important; position: relative; }
+        /* Fix btn-outline — theme-aware colors */
+        .btn-outline { display:inline-flex !important; align-items:center !important; gap:8px !important; padding:12px 28px !important; border:2px solid var(--border-color) !important; border-radius:50px !important; color:var(--text-primary) !important; font-family:'Plus Jakarta Sans',sans-serif !important; font-weight:700 !important; font-size:1rem !important; text-decoration:none !important; transition:all 0.3s !important; background:var(--bg-card) !important; cursor:pointer !important; }
+        .btn-outline:hover { border-color:var(--cyan-glow) !important; color:var(--cyan-glow) !important; }
+        /* Footer top gradient bar */
         .footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--cyan-glow), var(--gold-accent), var(--cyan-glow), transparent); }
         .footer h4 { font-family: 'Space Grotesk', sans-serif !important; font-size: 0.78rem !important; letter-spacing: 2px !important; text-transform: uppercase !important; color: var(--cyan-glow) !important; margin-bottom: 16px !important; }
         .footer p, .footer li, .footer a { font-family: 'Plus Jakarta Sans', sans-serif !important; }
-        .footer ul li a:hover { color: var(--cyan-glow) !important; }
-        .footer-bottom p { font-family: 'Space Grotesk', sans-serif !important; font-size: 0.8rem !important; letter-spacing: 0.5px !important; color: var(--text-muted) !important; }
+        .footer-bottom p { font-family: 'Space Grotesk', sans-serif !important; font-size: 0.8rem !important; letter-spacing: 0.5px !important; }
         /* Event horizontal card */
-        .event-horizontal { display:grid; grid-template-columns:1fr 1fr; border-radius:20px; overflow:hidden; border:1px solid rgba(0,240,255,0.2); box-shadow:0 10px 40px rgba(0,0,0,0.4); margin-top:40px; }
+        .event-horizontal { display:grid; grid-template-columns:1fr 1fr; border-radius:20px; overflow:hidden; border:1px solid var(--border-color); box-shadow:var(--glass-shadow); margin-top:40px; }
         .event-horizontal .event-img { height:340px; overflow:hidden; }
         .event-horizontal .event-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease; }
         .event-horizontal:hover .event-img img { transform:scale(1.06); }
-        .event-horizontal .event-body { padding:40px; display:flex; flex-direction:column; justify-content:center; gap:16px; background:var(--card-bg); }
+        .event-horizontal .event-body { padding:40px; display:flex; flex-direction:column; justify-content:center; gap:16px; background:var(--bg-card); }
         @media(max-width:768px){ .event-horizontal { grid-template-columns:1fr; } .event-horizontal .event-img { height:220px; } }
     </style>
+
     <header class="navbar">
         <div class="nav-container">
             <a href="index.html" class="brand-logo">
@@ -287,7 +285,8 @@
                 <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:36px;">
                     <div>
                         <span style="font-family:'Space Grotesk',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:3px;color:#10b981;text-transform:uppercase;display:block;margin-bottom:10px;">EVENT HIGHLIGHT</span>
-                        <h2 style="font-family:'Orbitron',sans-serif;font-size:clamp(1.5rem,4vw,2.4rem);font-weight:900;color:#fff;margin:0;line-height:1.2;">Intra Science Festival<br><span style="color:#10b981;font-size:0.75em;">&amp; Freshers' Orientation 2025</span></h2>
+                        <h2 style="font-family:'Orbitron',sans-serif;font-size:clamp(1.5rem,4vw,2.4rem);font-weight:900;color:var(--text-primary);margin:0;line-height:1.2;">Intra Science Festival<br><span style="color:#10b981;font-size:0.75em;">&amp; Freshers' Orientation 2025</span></h2>
+
                     </div>
                     <a href="gallery.html" style="display:inline-flex;align-items:center;gap:9px;padding:12px 24px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.35);border-radius:50px;color:#10b981;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;text-decoration:none;transition:all 0.3s;" onmouseover="this.style.background='rgba(16,185,129,0.25)'" onmouseout="this.style.background='rgba(16,185,129,0.12)'"><i class="fa-solid fa-images"></i> View Gallery</a>
                 </div>
