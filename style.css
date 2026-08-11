@@ -477,7 +477,8 @@ h1, h2, h3, .page-title, .section-title {
     background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, transparent 70%);
     border-radius: 50%; pointer-events: none;
     transform: translate(-50%, -50%);
-    z-index: 9999;
+    z-index: 0;
+
 }
 
 /* Header & Glass Navbar */
@@ -548,9 +549,10 @@ h1, h2, h3, .page-title, .section-title {
     position: absolute;
     top: 100%;
     left: 0;
-    background: rgba(8, 12, 20, 0.96);
+    background: var(--bg-card);
     backdrop-filter: blur(16px);
-    border: 1px solid var(--cyan-glow);
+    border: 1px solid var(--border-color);
+
     border-radius: 14px;
     min-width: 200px;
     padding: 8px 0;
