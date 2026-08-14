@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dhakacollegescienceclub.github.io/sitemap.xml

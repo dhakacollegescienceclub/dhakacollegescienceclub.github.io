@@ -6,7 +6,7 @@
 
 ### *Spreading the knowledge of science to the utmost since 1996*
 
-[![Website](https://img.shields.io/badge/🌐_Website-Live-00F2FE?style=for-the-badge)](https://seadib.github.io/dcsc/)
+[![Website](https://img.shields.io/badge/🌐_Website-Live-00F2FE?style=for-the-badge)](https://dhakacollegescienceclub.github.io/)
 [![Facebook](https://img.shields.io/badge/Facebook-DCSC-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/DhakaCollegeScienceClub)
 [![Instagram](https://img.shields.io/badge/Instagram-DCSC-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/dcsc_official)
 
