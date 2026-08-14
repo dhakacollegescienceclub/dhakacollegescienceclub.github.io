@@ -132,21 +132,7 @@ DCSC/
 - **Effects**: Glassmorphism, backdrop blur, gradient borders, micro-animations, scroll-triggered reveals
 - **Responsive**: Mobile-first approach with optimized layouts for all screen sizes
 
----
 
-## 📸 Screenshots
-
-<div align="center">
-
-| Dark Mode | Light Mode |
-|---|---|
-| ![Dark Mode Home](image/screenshot-dark.png) | ![Light Mode Home](image/screenshot-light.png) |
-
-</div>
-
-> 💡 *Replace the screenshot paths with actual screenshots of your website*
-
----
 
 ## 🤝 Contributing
 
