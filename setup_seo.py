@@ -44,7 +44,7 @@ for p, priority, freq in pages:
     url_path = "" if p == "index.html" else p
     sitemap_xml.append("  <url>")
     sitemap_xml.append(f"    <loc>{domain}/{url_path}</loc>")
-    sitemap_xml.append("    <lastmod>2026-08-15</lastmod>")
+    sitemap_xml.append("    <lastmod>2026-08-16</lastmod>")
     sitemap_xml.append(f"    <changefreq>{freq}</changefreq>")
     sitemap_xml.append(f"    <priority>{priority}</priority>")
     sitemap_xml.append("  </url>")
@@ -111,7 +111,7 @@ for filename in html_files:
     content = re.sub(r'<meta\s+name=["\']theme-color["\'][^>]*>', '', content, flags=re.IGNORECASE)
     content = re.sub(r'<meta\s+property=["\']og:[^>]*>', '', content, flags=re.IGNORECASE)
     content = re.sub(r'<meta\s+property=["\']twitter:[^>]*>', '', content, flags=re.IGNORECASE)
-    content = re.sub(r'<link\s+rel=["\'](icon|shortcut icon|apple-touch-icon|canonical)["\'][^>]*>', '', content, flags=re.IGNORECASE)
+    content = re.sub(r'<link\s+rel=["\'](icon|shortcut icon|apple-touch-icon|canonical|manifest)["\'][^>]*>', '', content, flags=re.IGNORECASE)
     content = re.sub(r'<script\s+type=["\']application/ld\+json["\'][^>]*>.*?</script>', '', content, flags=re.DOTALL | re.IGNORECASE)
 
     seo_block = f"""
@@ -126,12 +126,16 @@ for filename in html_files:
     <meta name="theme-color" content="#080C14">
     <link rel="canonical" href="{page_url}">
 
-    <!-- Google & Bing Favicons -->
+    <!-- Complete Favicon Suite (SVG, ICO, Multi-size PNG & WebManifest) -->
+    <link rel="icon" type="image/svg+xml" href="{domain}/favicon.svg">
     <link rel="icon" type="image/x-icon" href="{domain}/favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="{domain}/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="{domain}/image/favicon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="{domain}/image/favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="{domain}/image/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{domain}/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{domain}/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="{domain}/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="{domain}/android-chrome-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{domain}/apple-touch-icon.png">
+    <link rel="manifest" href="{domain}/site.webmanifest">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -158,4 +162,4 @@ for filename in html_files:
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content)
 
-print(f"Updated HTML files with WebSite schema and root favicon icons.")
+print(f"Updated HTML files with full favicon suite including SVG, multi-resolution PNGs, and webmanifest.")
