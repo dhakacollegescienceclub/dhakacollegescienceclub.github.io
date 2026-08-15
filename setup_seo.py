@@ -44,7 +44,7 @@ for p, priority, freq in pages:
     url_path = "" if p == "index.html" else p
     sitemap_xml.append("  <url>")
     sitemap_xml.append(f"    <loc>{domain}/{url_path}</loc>")
-    sitemap_xml.append("    <lastmod>2026-08-14</lastmod>")
+    sitemap_xml.append("    <lastmod>2026-08-15</lastmod>")
     sitemap_xml.append(f"    <changefreq>{freq}</changefreq>")
     sitemap_xml.append(f"    <priority>{priority}</priority>")
     sitemap_xml.append("  </url>")
@@ -54,9 +54,18 @@ sitemap_xml.append("</urlset>")
 with open(os.path.join(base_dir, "sitemap.xml"), "w", encoding="utf-8") as f:
     f.write("\n".join(sitemap_xml))
 
-# 3. Update all HTML files with SEO metadata, Google Verification, canonical links, favicons, OG tags, Schema.org
-json_ld = f"""
-    <!-- Schema.org Structured Data -->
+# 3. WebSite Schema & EducationalOrganization Schema for Google Site Name
+json_ld_website = f"""
+    <!-- Google WebSite Schema for Site Name -->
+    <script type="application/ld+json">
+    {{
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Dhaka College Science Club",
+      "alternateName": ["DCSC", "Dhaka College Science Club (DCSC)"],
+      "url": "{domain}/"
+    }}
+    </script>
     <script type="application/ld+json">
     {{
       "@context": "https://schema.org",
@@ -109,7 +118,7 @@ for filename in html_files:
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="{google_verification_code}">
 
-    <!-- SEO Meta Tags & Favicon -->
+    <!-- SEO Meta Tags -->
     <meta name="description" content="Dhaka College Science Club (DCSC) — Spreading the knowledge of science to the utmost since 1996. Official website of DCSC.">
     <meta name="keywords" content="Dhaka College Science Club, DCSC, Dhaka College, Science Club Bangladesh, DCSC Official, Science Club">
     <meta name="robots" content="index, follow">
@@ -118,10 +127,11 @@ for filename in html_files:
     <link rel="canonical" href="{page_url}">
 
     <!-- Google & Bing Favicons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="image/favicon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="image/favicon.png">
-    <link rel="shortcut icon" href="image/favicon.png" type="image/png">
-    <link rel="apple-touch-icon" href="image/logo.png">
+    <link rel="icon" type="image/x-icon" href="{domain}/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{domain}/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="{domain}/image/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="{domain}/image/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{domain}/image/logo.png">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -137,7 +147,7 @@ for filename in html_files:
     <meta property="twitter:title" content="{page_title}">
     <meta property="twitter:description" content="Dhaka College Science Club (DCSC) — Spreading the knowledge of science to the utmost since 1996.">
     <meta property="twitter:image" content="{domain}/image/logo.png">
-{json_ld if filename == "index.html" else ""}"""
+{json_ld_website if filename == "index.html" else ""}"""
 
     # Insert seo_block right after <meta name="viewport" ...>
     if '<meta name="viewport"' in content:
@@ -148,4 +158,4 @@ for filename in html_files:
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content)
 
-print(f"Updated HTML files and setup_seo.py with {google_verification_code}")
+print(f"Updated HTML files with WebSite schema and root favicon icons.")
